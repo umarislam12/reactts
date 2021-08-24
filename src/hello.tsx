@@ -1,6 +1,8 @@
 // src/components/StatefulHello.tsx
 import "./hello";
 import * as React from "react";
+import pokemon from './pokemon.json';
+import Clock from "./clock";
 
 export interface Props {
   name:string;
@@ -31,12 +33,37 @@ class Hello extends React.Component<Props, State> {
 
     return (
       <div className="hello">
-        <div className="greeting">
+         <Clock />
+        <div className="greeting" style={{textAlign:"center", marginTop:"1rem"}}>
           Hello {name + getExclamationMarks(this.state.currentEnthusiasm)}
         </div>
         <button onClick={this.onDecrement}>-</button>
         <button onClick={this.onIncrement}>+</button>
+
+
+        <table width="100%">
+          <thead>
+              <tr>
+                <th>name</th>
+                <th>name</th>
+              </tr>
+          </thead>
+          <tbody>
+            {pokemon.slice(0,20).map(poke=>(
+                <tr key={poke.id}> 
+                <td style={{textAlign:"center"}}>{poke.name.english}</td>
+                <td style={{textAlign:"center"}}>{poke.type.join(", ")}</td>
+
+              </tr>
+
+            ))}
+            
+          </tbody>
+          <tfoot></tfoot>
+          </table>  
+         
       </div>
+
     );
   }
 
