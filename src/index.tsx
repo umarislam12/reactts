@@ -4,10 +4,11 @@ import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 import Hello from './hello';
+import Enter from './enter';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Hello  name="umar"/>
+    <Enter />
   </React.StrictMode>,
   document.getElementById('root')
 );

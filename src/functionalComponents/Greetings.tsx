@@ -19,7 +19,7 @@ export class LoginControl extends React.Component<{},{isLoggedIn:boolean}> {
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    this.state = {isLoggedIn: false};
+    this.state = {isLoggedIn: true};
   }
 
   handleLoginClick() {

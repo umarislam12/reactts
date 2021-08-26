@@ -7,7 +7,7 @@ import { Mood } from "./mood";
 import "./hello.css";
 import Friends from "./functionalComponents/friends";
 import Example from "./functionalComponents/counter";
-import {Greeting } from "./functionalComponents/Greetings";
+import {LoginControl } from "./functionalComponents/Greetings";
 export interface Props {
   name:string;
   enthusiasmLevel?: number;
@@ -37,11 +37,12 @@ class Hello extends React.Component<Props, State> {
 
     return (
       <div className="hello">
+        <h1>hello umar{this.state.currentEnthusiasm}</h1>
+         <LoginControl/> 
          <Mood />
          <Clock />
          <Friends/>
          <Example/>
-         <Greeting/> 
         <button onClick={this.onDecrement}>-</button>
         <button onClick={this.onIncrement}>+</button>
 
