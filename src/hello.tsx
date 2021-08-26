@@ -3,7 +3,11 @@ import "./hello";
 import * as React from "react";
 import pokemon from './pokemon.json';
 import Clock from "./clock";
-
+import { Mood } from "./mood";
+import "./hello.css";
+import Friends from "./functionalComponents/friends";
+import Example from "./functionalComponents/counter";
+import {Greeting } from "./functionalComponents/Greetings";
 export interface Props {
   name:string;
   enthusiasmLevel?: number;
@@ -33,10 +37,11 @@ class Hello extends React.Component<Props, State> {
 
     return (
       <div className="hello">
+         <Mood />
          <Clock />
-        <div className="greeting" style={{textAlign:"center", marginTop:"1rem"}}>
-          Hello {name + getExclamationMarks(this.state.currentEnthusiasm)}
-        </div>
+         <Friends/>
+         <Example/>
+         <Greeting/> 
         <button onClick={this.onDecrement}>-</button>
         <button onClick={this.onIncrement}>+</button>
 
