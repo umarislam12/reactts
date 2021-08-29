@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import './index.css';
-
+import store from './reduxeg/store';
 import reportWebVitals from './reportWebVitals';
-import Hello from './hello';
-import Enter from './enter';
+
+import Enter from './routing/enter';
 
 ReactDOM.render(
+  <Provider store={store}>
   <React.StrictMode>
     <Enter />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Provider>
+  ,
   document.getElementById('root')
 );
 

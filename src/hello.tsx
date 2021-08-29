@@ -1,13 +1,15 @@
 // src/components/StatefulHello.tsx
+
 import "./hello";
 import * as React from "react";
-import pokemon from './pokemon.json';
+
 import Clock from "./clock";
 import { Mood } from "./mood";
 import "./hello.css";
 import Friends from "./functionalComponents/friends";
 import Example from "./functionalComponents/counter";
 import {LoginControl } from "./functionalComponents/Greetings";
+import Pokemons from "./functionalComponents/pokemon";
 export interface Props {
   name:string;
   enthusiasmLevel?: number;
@@ -43,30 +45,12 @@ class Hello extends React.Component<Props, State> {
          <Clock />
          <Friends/>
          <Example/>
+         <Pokemons/>
         <button onClick={this.onDecrement}>-</button>
         <button onClick={this.onIncrement}>+</button>
 
 
-        <table width="100%">
-          <thead>
-              <tr>
-                <th>name</th>
-                <th>name</th>
-              </tr>
-          </thead>
-          <tbody>
-            {pokemon.slice(0,20).map(poke=>(
-                <tr key={poke.id}> 
-                <td style={{textAlign:"center"}}>{poke.name.english}</td>
-                <td style={{textAlign:"center"}}>{poke.type.join(", ")}</td>
-
-              </tr>
-
-            ))}
-            
-          </tbody>
-          <tfoot></tfoot>
-          </table>  
+       
          
       </div>
 
