@@ -9,8 +9,10 @@ import {
 } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Signup from "../functionalComponents/signup";
-
+import "./enter.css"
 import Hello from "../hello";
+import NotFound from '../functionalComponents/notFound'
+import { AppBar, Button, IconButton, Toolbar, Typography } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -27,13 +29,28 @@ export default function Enter() {
   const classes = useStyles();
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
+      <div >
+
+
+      <AppBar position="static">
+  <Toolbar>
+    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+      {/* <MenuIcon /> */}
+    </IconButton>
+    <Typography variant="h6" className={classes.title}>
+     My first Application
+    </Typography>
+    <Button  variant="outlined" color="secondary"> <Link  to="/hello" >Hello</Link></Button>
+    <Button variant="outlined" color="secondary"> <Link to="/signup">SignUp</Link></Button>
+    <Button variant="outlined" color="secondary"> <Link to="/Products">Products</Link></Button>
+  </Toolbar>
+</AppBar>
+        {/* <nav>
+          <ul className="nav">
            
-            <li>
-              <Link to="/hello">Hello</Link>
-            </li>
+       <button>
+             
+              </button>
             <li>
               <Link to="/signup">signup</Link>
             </li>
@@ -41,7 +58,7 @@ export default function Enter() {
               <Link to="/products">Products</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -55,6 +72,7 @@ export default function Enter() {
           <Route path="/products">
             <Products />
           </Route>
+          <Route component={NotFound}/>
         </Switch>
       </div>
     </Router>
@@ -62,18 +80,18 @@ export default function Enter() {
 }
 function Products() {
   let match = useRouteMatch();
-
+console.log(match); 
   return (
     <div>
-      <h2>Topics</h2>
+      <h2>Topics </h2>
 
       <ul>
         <li>
-          <Link to={`${match.url}/components`}>Components</Link>
+          <Link to={`${match.url}/accessories`}>Accessories</Link>
         </li>
         <li>
-          <Link to={`${match.url}/props-v-state`}>
-            Props v. State
+          <Link to={`${match.url}/essentials`}>
+            Essentials
           </Link>
         </li>
       </ul>
@@ -83,11 +101,11 @@ function Products() {
           2nd <Route> here as an "index" page for all topics, or
           the page that is shown when no topic is selected */}
       <Switch>
-        <Route path={`${match.path}/:topicId`}>
+        <Route path={`${match.path}/:productId`}>
           <Topic />
         </Route>
         <Route path={match.path}>
-          <h3>Please select a topic.</h3>
+          <h3>Please select a category</h3>
         </Route>
       </Switch>
     </div>
@@ -95,7 +113,10 @@ function Products() {
 }
 
  function Topic() {
-  let { topicId }:any = useParams();
-  return <h3>Requested topic ID: {topicId}</h3>;
+  // console.log(useParams())
+  let { productId }:any = useParams();
+  return <div>
+    <h1>Here is your selected Products</h1>
+    <h3>Requested product ID: {productId}</h3></div>;
 }
 
