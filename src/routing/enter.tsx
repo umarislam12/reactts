@@ -8,12 +8,13 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
+import FilterableProductTable from "../functionalComponents/filterableProductTable"
 import { makeStyles } from '@material-ui/core/styles';
 import Signup from "../functionalComponents/signup";
 import "./enter.css"
 import Hello from "../hello";
 import NotFound from '../functionalComponents/notFound'
-import { AppBar, Button, IconButton, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Breadcrumbs, Button, IconButton, Toolbar, Typography } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -29,10 +30,12 @@ const useStyles = makeStyles((theme) => ({
 export default function Enter() {
   const classes = useStyles();
   return (
+    
     <Router>
+      
       <div >
 
-
+      
       <AppBar position="static">
   <Toolbar>
     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
@@ -41,11 +44,12 @@ export default function Enter() {
     <Typography variant="h6" className={classes.title}>
      My first Application
     </Typography>
-    <Button  variant="outlined" color="secondary"> <Link  to="/hello" >Hello</Link></Button>
-    <Button variant="outlined" color="secondary"> <Link to="/signup">SignUp</Link></Button>
-    <Button variant="outlined" color="secondary"> <Link to="/Products">Products</Link></Button>
+    <Button  > <Link style={{color:"white"}}  to="/hello" >Hello</Link></Button>
+    <Button > <Link style={{color:"white"}} to="/signup">SignUp</Link></Button>
+    <Button  > <Link style={{color:"white"}} to="/Products">Products</Link></Button>
   </Toolbar>
 </AppBar>
+
         {/* <nav>
           <ul className="nav">
            
@@ -76,6 +80,7 @@ export default function Enter() {
           <Route component={NotFound}/>
         </Switch>
       </div>
+   
     </Router>
   );
 }
@@ -84,7 +89,7 @@ function Products() {
 console.log(match); 
   return (
     <div>
-      <h2>Topics </h2>
+      <h2>types of products </h2>
 
       <ul>
         <li>
@@ -116,12 +121,16 @@ console.log(match);
  function Topic() {
   // console.log(useParams())
   let { productId }:any = useParams();
- {if(productId==="accessories"){  return(<div>
-    <h1>Here is your selected Products</h1>
-    <h3>Requested product ID: {productId}</h3></div>)
+ {if(productId==="accessories")
+ {  return(<FilterableProductTable/>)
     
   }else{
-    return (<div>hi</div>)
+    return (
+      
+      <div>
+    <h1>Here is your selected Products</h1>
+    <h3>Requested product ID: {productId}</h3></div>
+      )
   }}
 }
 
