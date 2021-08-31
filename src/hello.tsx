@@ -6,10 +6,10 @@ import * as React from "react";
 import Clock from "./clock";
 import { Mood } from "./mood";
 import "./hello.css";
-import Friends from "./functionalComponents/friends";
-import Example from "./functionalComponents/counter";
-import {LoginControl } from "./functionalComponents/Greetings";
-import Pokemons from "./functionalComponents/pokemon";
+import Friends from "./Components/friends";
+import Example from "./Components/counter";
+import {LoginControl } from "./Components/Greetings";
+import Pokemons from "./Components/pokemon";
 export interface Props {
   name:string;
   enthusiasmLevel?: number;

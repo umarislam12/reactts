@@ -17,6 +17,13 @@ export default function SearchBar() {
     <div>
     <form className={classes.root} noValidate autoComplete="off">
   <TextField id="standard-basic" label="Search through me" />
+  <p>
+          <input
+            type="checkbox"
+             />
+          {' '}
+          Only show products in stock
+        </p>
   </form>
     </div>
   );

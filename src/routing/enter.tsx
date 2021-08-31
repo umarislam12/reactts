@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -8,12 +8,12 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
-import FilterableProductTable from "../functionalComponents/filterableProductTable"
+import FilterableProductTable from "../Components/filterableProductTable"
 import { makeStyles } from '@material-ui/core/styles';
-import Signup from "../functionalComponents/signup";
+import Signup from "../Components/signup";
 import "./enter.css"
 import Hello from "../hello";
-import NotFound from '../functionalComponents/notFound'
+import NotFound from '../Components/notFound'
 import { AppBar, Breadcrumbs, Button, IconButton, Toolbar, Typography } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -117,12 +117,28 @@ console.log(match);
     </div>
   );
 }
-
+const PRODUCTS = [
+  {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
+  {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
+  {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
+  {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
+  {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
+  {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
+];
  function Topic() {
   // console.log(useParams())
+  // type PRODUCTS={
+  //   category: string,
+  //   price: string,
+  //   stocked: boolean,
+  //   name: string,
+  // }
+  
   let { productId }:any = useParams();
  {if(productId==="accessories")
- {  return(<FilterableProductTable/>)
+ {  return(<FilterableProductTable 
+  products={PRODUCTS}
+  />)
     
   }else{
     return (
