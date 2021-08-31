@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import {  Container, CssBaseline, Avatar, Typography, Grid, TextField, FormControlLabel, Checkbox, Box, Button, makeStyles } from '@material-ui/core';
 import { Link } from "react-router-dom";
@@ -7,7 +8,7 @@ export interface SignupProps {
     
 }
 function Copyright() {
-    const {inputs, handleInputChange, handleSubmit} = useSignupForm();
+  
     return (
       <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
@@ -40,9 +41,20 @@ function Copyright() {
     },
   }));
   
- 
+  
+  
 const Signup = () => {
     const classes = useStyles();
+    
+    const signup = () => {
+      alert(`User Created!
+             Name: ${inputs.firstName} ${inputs.lastName}
+             Email: ${inputs.email}
+             Password:${inputs.password}
+             Checkbox: ${inputs.chec}
+             `);
+    }
+    const {inputs, handleInputChange, handleSubmit} = useSignupForm(signup);
     return ( <Container component="main" maxWidth="xs">
     <CssBaseline />
     <div className={classes.paper}>
@@ -52,10 +64,12 @@ const Signup = () => {
       <Typography component="h1" variant="h5">
         Sign up
       </Typography>
-      <form className={classes.form} noValidate>
+
+
+      <form  onSubmit={handleSubmit} className={classes.form} noValidate>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
-            <TextField
+            <TextField onChange={handleInputChange} value={inputs.firstName } 
               autoComplete="fname"
               name="firstName"
               variant="outlined"
@@ -68,6 +82,7 @@ const Signup = () => {
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
+            onChange={handleInputChange} value={inputs.lastName}
               variant="outlined"
               required
               fullWidth
@@ -79,6 +94,7 @@ const Signup = () => {
           </Grid>
           <Grid item xs={12}>
             <TextField
+            onChange={handleInputChange} value={inputs.email}
               variant="outlined"
               required
               fullWidth
@@ -90,6 +106,7 @@ const Signup = () => {
           </Grid>
           <Grid item xs={12}>
             <TextField
+            onChange={handleInputChange} value={inputs.password}
               variant="outlined"
               required
               fullWidth
@@ -102,7 +119,7 @@ const Signup = () => {
           </Grid>
           <Grid item xs={12}>
             <FormControlLabel
-              control={<Checkbox value="allowExtraEmails" color="primary" />}
+              control={<Checkbox onChange={handleInputChange} name="chec" value="allowExtraEmails" color="primary" />}
               label="I want to receive inspiration, marketing promotions and updates via email."
             />
           </Grid>

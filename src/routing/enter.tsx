@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -115,8 +116,12 @@ console.log(match);
  function Topic() {
   // console.log(useParams())
   let { productId }:any = useParams();
-  return <div>
+ {if(productId==="accessories"){  return(<div>
     <h1>Here is your selected Products</h1>
-    <h3>Requested product ID: {productId}</h3></div>;
+    <h3>Requested product ID: {productId}</h3></div>)
+    
+  }else{
+    return (<div>hi</div>)
+  }}
 }
 
