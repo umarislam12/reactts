@@ -8,7 +8,7 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
-import FilterableProductTable from "../Components/filterableProductTable"
+import FilterableProductTable from "../Components/FilterTable/filterableProductTable"
 import { makeStyles } from '@material-ui/core/styles';
 import Signup from "../Components/signup";
 import "./enter.css"
@@ -117,7 +117,13 @@ console.log(match);
     </div>
   );
 }
-const PRODUCTS = [
+type PRODUCTS={
+  category: string,
+  price: string,
+  stocked: boolean,
+  name: string,
+}
+export const PRODUCTS:PRODUCTS[] = [
   {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
   {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
   {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
@@ -127,21 +133,17 @@ const PRODUCTS = [
 ];
  function Topic() {
   // console.log(useParams())
-  // type PRODUCTS={
-  //   category: string,
-  //   price: string,
-  //   stocked: boolean,
-  //   name: string,
-  // }
+  
   
   let { productId }:any = useParams();
- {if(productId==="accessories")
- {  return(<FilterableProductTable 
-  products={PRODUCTS}
-  />)
-    
-  }else{
-    return (
+ {
+  if(productId==="accessories")
+    {  return(<FilterableProductTable 
+      products={PRODUCTS}
+      />)
+        
+    }else{
+        return (
       
       <div>
     <h1>Here is your selected Products</h1>
