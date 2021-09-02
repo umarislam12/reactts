@@ -6,15 +6,23 @@ import {
   Route,
   Link,
   useRouteMatch,
-  useParams
+  useParams,
 } from "react-router-dom";
-import FilterableProductTable from "../Components/FilterTable/filterableProductTable"
-import { makeStyles } from '@material-ui/core/styles';
+import FilterableProductTable from "../Components/FilterTable/filterableProductTable";
+import { makeStyles } from "@material-ui/core/styles";
 import Signup from "../Components/signup";
-import "./enter.css"
+import "./enter.css";
 import Hello from "../hello";
-import NotFound from '../Components/notFound'
-import { AppBar, Breadcrumbs, Button, IconButton, Toolbar, Typography } from "@material-ui/core";
+import NotFound from "../Components/notFound";
+import {
+  AppBar,
+  Breadcrumbs,
+  Button,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
+import Invoice from "../Components/Invoicing/Invoice"
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -30,25 +38,47 @@ const useStyles = makeStyles((theme) => ({
 export default function Enter() {
   const classes = useStyles();
   return (
-    
     <Router>
-      
-      <div >
-
-      
-      <AppBar position="static">
-  <Toolbar>
-    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-      {/* <MenuIcon /> */}
-    </IconButton>
-    <Typography variant="h6" className={classes.title}>
-     My first Application
-    </Typography>
-    <Button  > <Link style={{color:"white"}}  to="/hello" >Hello</Link></Button>
-    <Button > <Link style={{color:"white"}} to="/signup">SignUp</Link></Button>
-    <Button  > <Link style={{color:"white"}} to="/Products">Products</Link></Button>
-  </Toolbar>
-</AppBar>
+      <div>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+            >
+              {/* <MenuIcon /> */}
+            </IconButton>
+            <Typography variant="h6" className={classes.title}>
+              My first Application
+            </Typography>
+            <Button>
+              {" "}
+              <Link style={{ color: "white" }} to="/hello">
+                Hello
+              </Link>
+            </Button>
+            <Button>
+              {" "}
+              <Link style={{ color: "white" }} to="/signup">
+                SignUp
+              </Link>
+            </Button>
+            <Button>
+              {" "}
+              <Link style={{ color: "white" }} to="/products">
+                Products
+              </Link>
+            </Button>
+            <Button>
+              {" "}
+              <Link style={{ color: "white" }} to="/invoice">
+                Invoice
+              </Link>
+            </Button>
+          </Toolbar>
+        </AppBar>
 
         {/* <nav>
           <ul className="nav">
@@ -69,24 +99,26 @@ export default function Enter() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/signup">
-            <Signup/>
+            <Signup />
           </Route>
           <Route path="/hello">
-            <Hello name="umar"/>
+            <Hello name="umar" />
           </Route>
           <Route path="/products">
             <Products />
           </Route>
-          <Route component={NotFound}/>
+          <Route path="/invoice">
+            <Invoice />
+          </Route>
+          <Route component={NotFound} />
         </Switch>
       </div>
-   
     </Router>
   );
 }
 function Products() {
   let match = useRouteMatch();
-console.log(match); 
+  console.log(match);
   return (
     <div>
       <h2>types of products </h2>
@@ -96,9 +128,7 @@ console.log(match);
           <Link to={`${match.url}/accessories`}>Accessories</Link>
         </li>
         <li>
-          <Link to={`${match.url}/essentials`}>
-            Essentials
-          </Link>
+          <Link to={`${match.url}/essentials`}>Essentials</Link>
         </li>
       </ul>
 
@@ -117,38 +147,59 @@ console.log(match);
     </div>
   );
 }
-type PRODUCTS={
-  category: string,
-  price: string,
-  stocked: boolean,
-  name: string,
-}
-export const PRODUCTS:PRODUCTS[] = [
-  {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-  {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-  {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
-  {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-  {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-  {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
+type PRODUCTS = {
+  category: string;
+  price: string;
+  stocked: boolean;
+  name: string;
+};
+export const PRODUCTS: PRODUCTS[] = [
+  {
+    category: "Sporting Goods",
+    price: "$49.99",
+    stocked: true,
+    name: "Football",
+  },
+  {
+    category: "Sporting Goods",
+    price: "$9.99",
+    stocked: true,
+    name: "Baseball",
+  },
+  {
+    category: "Sporting Goods",
+    price: "$29.99",
+    stocked: false,
+    name: "Basketball",
+  },
+  {
+    category: "Electronics",
+    price: "$99.99",
+    stocked: true,
+    name: "iPod Touch",
+  },
+  {
+    category: "Electronics",
+    price: "$399.99",
+    stocked: false,
+    name: "iPhone 5",
+  },
+  { category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7" },
 ];
- function Topic() {
+function Topic() {
   // console.log(useParams())
-  
-  
-  let { productId }:any = useParams();
- {
-  if(productId==="accessories")
-    {  return(<FilterableProductTable 
-      products={PRODUCTS}
-      />)
-        
-    }else{
-        return (
-      
-      <div>
-    <h1>Here is your selected Products</h1>
-    <h3>Requested product ID: {productId}</h3></div>
-      )
-  }}
-}
 
+  let { productId }: any = useParams();
+  {
+    if (productId === "accessories") {
+      return <FilterableProductTable products={PRODUCTS} />;
+    } else {
+      return (
+        <div>
+          <h1>Here is your selected Products</h1>
+          <h3>Requested product ID: {productId}</h3>
+        </div>
+      );
+    }
+  }
+}
