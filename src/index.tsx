@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import ErrorBoundary from './errorBoundary';
 import './index.css';
 //import {store} from './reduxeg/store';
 import reportWebVitals from './reportWebVitals';
@@ -10,7 +11,9 @@ import Enter from './routing/enter';
 ReactDOM.render(
   
   <React.StrictMode>
+    <ErrorBoundary> 
     <Enter />
+    </ErrorBoundary>
   </React.StrictMode>
  
   ,

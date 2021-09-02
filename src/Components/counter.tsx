@@ -5,13 +5,16 @@ export default function Example() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log(document.title = `You  ${count} times`);
+    if(count===5){
+      throw Error
+    }
+    console.log(document.title = `You  ${count} times which is less than 5`);
     
   },[count]);
 
   return (
     <div>
-      <p>Lasdsadsadas {count} times</p>
+      <p>counter {count} times</p>
       <button onClick={() => setCount(count + 1)}>
         Click me
       </button>

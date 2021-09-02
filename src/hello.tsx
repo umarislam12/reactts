@@ -19,18 +19,20 @@ interface State {
   currentEnthusiasm: number;
 }
 
-class Hello extends React.Component<Props, State> {
+class Hello extends React.Component<Props, {currentEnthusiasm:number}> {
   constructor(props: Props) {
     super(props);
     
-    this.state = { currentEnthusiasm: props.enthusiasmLevel || 1 };
+    this.state = { currentEnthusiasm: 1};
   }
   
   onIncrement = () => this.updateEnthusiasm(this.state.currentEnthusiasm + 1);
   onDecrement = () => this.updateEnthusiasm(this.state.currentEnthusiasm - 1);
-  
+  componentDidUpdate(){
+    console.log(this.state.currentEnthusiasm);
+  }
   render() {
-    console.log(typeof this.state)
+   
     const { name } = this.props;
     
     if (this.state.currentEnthusiasm <= 0) {
@@ -39,15 +41,17 @@ class Hello extends React.Component<Props, State> {
 
     return (
       <div className="hello">
-        <h1>hello umar{this.state.currentEnthusiasm}</h1>
+
+        <h1>hello {this.props.name}{getExclamationMarks(this.state.currentEnthusiasm)}</h1>
+        <button onClick={this.onDecrement}>-</button>
+        <button onClick={this.onIncrement}>+</button>
          <LoginControl/> 
          <Mood />
          <Clock />
-         <Friends/>
          <Example/>
+         <Friends/>
          <Pokemons/>
-        <button onClick={this.onDecrement}>-</button>
-        <button onClick={this.onIncrement}>+</button>
+       
 
 
        
@@ -59,11 +63,12 @@ class Hello extends React.Component<Props, State> {
 
   updateEnthusiasm(currentEnthusiasm: number) {
     this.setState({ currentEnthusiasm });
+    console.log(this.state.currentEnthusiasm);
   }
 }
 
 export default Hello;
 
 function getExclamationMarks(numChars: number) {
-  return Array(numChars + 1).join('!');
+  return Array(numChars +1).join('!');
 }
