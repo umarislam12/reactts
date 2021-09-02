@@ -9,9 +9,23 @@ useEffect(()=>{
   return (
     <div>
       <p>I have  pretty much{friends} </p>
+
+      
+
       <button onClick={()=>setFriend(["cat"])}>
         Add friends
       </button>
     </div>
   );
 }
+// function handleCallButton(evt) {
+//   setStatusMessage("Calling...");
+//   navigator.mediaDevices.getUserMedia({video: true, audio: true})
+//     .then(chatStream => {
+//       selfViewElem.srcObject = chatStream;
+//       chatStream.getTracks().forEach(track => myPeerConnection.addTrack(track, chatStream));
+//       setStatusMessage("Connected");
+//     }).catch(err => {
+//       setStatusMessage("Failed to connect");
+//     });
+// }

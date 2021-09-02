@@ -31,5 +31,7 @@ export default function Pokemons() {
           <tfoot></tfoot>
           </table>  
     </div>
+
+    
   );
 }
