@@ -8,7 +8,7 @@ export interface SaleLineProps {
 const SaleLine = () => {
     return ( <div>
            <article>
-			<h1>Recipient</h1>
+			<h1 className="inh1"> Recipient</h1>
 			<address contentEditable>
 				<p>Some Company<br/>c/o Some Guy</p>
 			</address>
