@@ -1,4 +1,7 @@
+
+// @ts-nocheck
 import React, { useState,useEffect } from 'react';
+
 
 export default function Friends() {
   // Declare a new state variable, which we'll call "count"
@@ -8,6 +11,7 @@ useEffect(()=>{
 },[friends])
   return (
     <div>
+     
       <p>I have  pretty much{friends} </p>
 
       
@@ -15,6 +19,7 @@ useEffect(()=>{
       <button onClick={()=>setFriend(["cat"])}>
         Add friends
       </button>
+      
     </div>
   );
 }

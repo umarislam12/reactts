@@ -1,4 +1,7 @@
+// @ts-nocheck
+
 import React from "react";
+
 export interface PRODUCTS{
   category: string,
   price: string,
@@ -22,10 +25,12 @@ export default class ProductRow extends React.Component<IProps> {
       </span>;
 
     return (
+     
       <tr>
         <td>{name}</td>
         <td>{product.price}</td>
       </tr>
+    
     );
   }
 }

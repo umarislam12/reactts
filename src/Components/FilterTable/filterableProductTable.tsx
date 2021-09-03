@@ -18,6 +18,8 @@ interface IState{
   filterText:string;
   inStockOnly:boolean;
 }
+export const ThemeContext = React.createContext('light');
+
 export default class FilterableProductTable extends React.Component <IProps, IState>{
   constructor(props:any){
     super(props);
@@ -35,18 +37,21 @@ export default class FilterableProductTable extends React.Component <IProps, ISt
       inStockOnly: inStockOnly
     })
   }
+  
   render(){
   return(<div>
-    <SearchBar
-     filterText={this.state.filterText}
-     inStockOnly={this.state.inStockOnly}
-     onFilterTextChange={this.handleFilterTextChange}
-     onInStockChange={this.handleInStockChange}
-     />
-   <ProductTable  
+    <ThemeContext.Provider value="dark">
+        <SearchBar
+        filterText={this.state.filterText}
+        inStockOnly={this.state.inStockOnly}
+        onFilterTextChange={this.handleFilterTextChange}
+        onInStockChange={this.handleInStockChange}
+        />
+          <ProductTable  
           products={this.props.products}
           filterText={this.state.filterText}
           inStockOnly={this.state.inStockOnly}/>
+      </ThemeContext.Provider>
    </div>
   )};
 }

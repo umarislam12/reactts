@@ -1,7 +1,9 @@
+// @ts-nocheck
 import * as React from 'react';
 import ProductRow from './productRow';
-
+import {ThemeContext} from './filterableProductTable';
 import ProductCategoryRow from './productCategoryRow';
+
 export interface PRODUCTS{
   category: string,
   price: string,
@@ -53,6 +55,10 @@ export default class ProductTable extends React.Component <IProps> {
     )
     return (
       <div style={{ height: 400, width: '100%' }}>
+        
+        <ThemeContext.Consumer>
+          {data=><h4>{data}</h4>}
+          </ThemeContext.Consumer>
      <table>
         <thead>
           <tr>
@@ -62,6 +68,8 @@ export default class ProductTable extends React.Component <IProps> {
         </thead>
         <tbody>{rows}</tbody>
       </table>
+      
+     
       </div>
     );
   }

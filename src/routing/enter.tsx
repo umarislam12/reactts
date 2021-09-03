@@ -34,10 +34,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-
 export default function Enter() {
   const classes = useStyles();
   return (
+    
     <Router>
       <div>
         <AppBar position="static">
@@ -114,6 +114,7 @@ export default function Enter() {
         </Switch>
       </div>
     </Router>
+    
   );
 }
 function Products() {

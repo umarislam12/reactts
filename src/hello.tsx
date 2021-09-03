@@ -10,6 +10,7 @@ import Friends from "./Components/friends";
 import Example from "./Components/counter";
 import {LoginControl } from "./Components/Greetings";
 import Pokemons from "./Components/pokemon";
+import styled, { createGlobalStyle, css } from 'styled-components';
 export interface Props {
   name:string;
   enthusiasmLevel?: number;
@@ -31,6 +32,9 @@ class Hello extends React.Component<Props, {currentEnthusiasm:number}> {
   componentDidUpdate(){
     console.log(this.state.currentEnthusiasm);
   }
+   divy = styled.div`
+  color: ${props => props.theme.colors.main};
+`;
   render() {
    
     const { name } = this.props;

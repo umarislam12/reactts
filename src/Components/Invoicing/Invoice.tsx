@@ -24,9 +24,10 @@ ${props => props.primary && css`
     color: white;
   `}
 `
- 
+
 const Invoice = () => {
   return ( <div>
+  
         <Button primary href="/docs"
         >
         Print
@@ -39,6 +40,7 @@ const Invoice = () => {
 				<p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
 			</div>
 		</aside>
+    
   </div> );
 }
  
