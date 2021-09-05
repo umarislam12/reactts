@@ -3,20 +3,22 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import ErrorBoundary from './errorBoundary';
 import './index.css';
-import { store } from './reduxeg/store';
+import { store } from './redux/store';
 //import {store} from './reduxeg/store';
 import reportWebVitals from './reportWebVitals';
 
 import Enter from './routing/enter';
 
 ReactDOM.render(
-  <Provider store={store}>
+  
   <React.StrictMode>
+    <Provider store={store}>
     <ErrorBoundary> 
     <Enter />
     </ErrorBoundary>
+    </Provider>
   </React.StrictMode>
-  </Provider>
+
  
   ,
   document.getElementById('root')
