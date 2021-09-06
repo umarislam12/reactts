@@ -22,8 +22,11 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
+import Todos from "../Components/Todos";
 import Invoice from "../Components/Invoicing/Invoice";
 import AddTodoForm from "../Components/AddTodoForm";
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -118,7 +121,7 @@ export default function Enter() {
             <Invoice />
           </Route>
           <Route path="/todos">
-            <AddTodoForm />
+            <Todos />
           </Route>
           <Route component={NotFound} />
         </Switch>
