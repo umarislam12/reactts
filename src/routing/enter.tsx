@@ -7,6 +7,7 @@ import {
   Link,
   useRouteMatch,
   useParams,
+  NavLink,
 } from "react-router-dom";
 import FilterableProductTable from "../Components/FilterTable/filterableProductTable";
 import { makeStyles } from "@material-ui/core/styles";
@@ -59,33 +60,33 @@ export default function Enter() {
             </Typography>
             <Button>
               {" "}
-              <Link style={{ color: "white" }} to="/hello">
+              <NavLink style={{ color: "white" }} to="/hello">
                 Hello
-              </Link>
+                </NavLink>
             </Button>
             <Button>
               {" "}
-              <Link style={{ color: "white" }} to="/signup">
+              <NavLink style={{ color: "white" }} to="/signup">
                 SignUp
-              </Link>
+              </NavLink>
             </Button>
             <Button>
               {" "}
-              <Link style={{ color: "white" }} to="/products">
+              <NavLink style={{ color: "white" }} to="/products">
                 Products
-              </Link>
+              </NavLink>
             </Button>
             <Button>
               {" "}
-              <Link style={{ color: "white" }} to="/invoice">
+              <NavLink style={{ color: "white" }} to="/invoice">
                 Invoice
-              </Link>
+              </NavLink>
             </Button>
             <Button>
               {" "}
-              <Link style={{ color: "white" }} to="/todos">
+              <NavLink style={{ color: "white" }} to="/todos">
                 Todos
-              </Link>
+              </NavLink>
             </Button>
           </Toolbar>
         </AppBar>

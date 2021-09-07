@@ -1,6 +1,6 @@
 import React from "react";
-import './invoiceHeader.css'
 
+import MyComponent from "./contentEditable"
 export interface InvoiceHeaderProps {
   
 }
@@ -10,7 +10,7 @@ export interface InvoiceHeaderProps {
 
   
 			<h1 className="inh1">Invoice</h1>
-			<address contentEditable>
+			<address contentEditable suppressContentEditableWarning={true}>
 				<p>Jonathan Neal</p>
 				<p>101 E. Chapman Ave<br/>Orange, CA 92866</p>
 				<p>(800) 555-1234</p>

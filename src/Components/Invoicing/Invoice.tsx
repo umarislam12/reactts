@@ -1,9 +1,10 @@
-import  Style  from "./Invoice.module.css";
+//import  Style  from "./Invoice.module.css";
 import React from "react";
 import InvoiceHeader from "./invoiceHeader";
 import SaleLine from "./saleLine";
 
 import styled, { createGlobalStyle, css } from 'styled-components';
+import MyComponent from "./contentEditable";
 export interface InvoiceProps {
   primary:boolean;
 }
@@ -33,10 +34,10 @@ const Invoice = () => {
         Print
         </Button>
     <InvoiceHeader/>
-    <SaleLine/>
+    <MyComponent/>
     <aside>
-			<h1 className={Style.h1}><span contentEditable>Additional Notes</span></h1>
-			<div contentEditable>
+			<h1 ><span contentEditable suppressContentEditableWarning={true}>Additional Notes</span></h1>
+			<div contentEditable suppressContentEditableWarning={true}  >
 				<p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
 			</div>
 		</aside>
