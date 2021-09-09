@@ -53,6 +53,7 @@ const Signup = () => {
              Password:${inputs.password}
              Checkbox: ${inputs.chec}
              `);
+             
     }
     const {inputs, handleInputChange, handleSubmit} = useSignupForm(signup);
     return ( <Container component="main" maxWidth="xs">
