@@ -17,7 +17,7 @@ export default class MyComponent extends React.Component{
       initialState:"<address ><p>Some Company<br/>c/o Some Guy</p></address>",
       initialTable:"<table ><tr> <th><span >Invoice #</span></th><td><span >101138</span></td></tr><tr><th><span >Date</span></th><td><span >January 1, 2012</span></td></tr><tr><th><span >Amount Due</span></th><td><span  >$</span><span>600.00</span></td></tr></table>",
       initialSaleLineTable:"<table ><thead><tr><th><span >Item</span></th><th><span >Description</span></th><th><span >Rate</span></th><th><span >Quantity</span></th><th><span >Price</span></th></tr></thead><tbody><tr  > <td><a >-</a><span contentEditable suppressContentEditableWarning={true}>Front End Consultation</span></td><td><span  >Experience Review</span></td><td><span data-prefix>$</span><span >150.00</span></td><td><span >4</span></td><td><span data-prefix>$</span><span>600.00</span></td></tr></tbody></table>",
-      initialLink:"<a onClick={addrows}>+</a>",
+      // initialLink:"<a onClick={addrows}>+</a>",
       initialTotalTable:"<table ><tbody><tr><th><span contentEditable suppressContentEditableWarning={true}>Total</span></th><td><span data-prefix>$</span><span>600.00</span></td></tr><tr><th><span contentEditable suppressContentEditableWarning={true}>Amount Paid</span></th><td><span data-prefix>$</span><span contentEditable suppressContentEditableWarning={true}>0.00</span></td></tr><tr ><th><span contentEditable suppressContentEditableWarning={true}>Balance Due</span></th><td><span data-prefix>$</span><span>600.00</span></td></tr></tbody></table>"
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -96,7 +96,10 @@ export default class MyComponent extends React.Component{
             initialTotalTable:e.target.value,
             })
           };
-    
+          // const inputEl = useRef(null);
+          addrows=()=>{
+            saleLineTable.current.insertAdjacentHTML("afterend", "		<td><a ></a><span contentEditable suppressContentEditableWarning={true}>Front End Consultation</span></td><td><a ></a><span contentEditable suppressContentEditableWarning={true}>Experience Review</span></td><td><span data-prefix>$</span><a ></a><span contentEditable suppressContentEditableWarning={true}>150.00</span></td><td><a ></a><span  contentEditable suppressContentEditableWarning={true}>4</span></td><td> <span data-prefix>$</span><a ></a><span contentEditable suppressContentEditableWarning={true}>600.00</span></td>");
+          }
 
 handleSubmit=(e)=>{
 e.preventDefault();
@@ -136,25 +139,26 @@ console.log(this.table.current);
            />
               <ContentEditable
              innerRef={this.saleLineTable}
-             html={this.state.saleLineTable} // innerHTML of the editable div
+             html={this.state.initialSaleLineTable} // innerHTML of the editable div
              disabled={false}       // use true to disable editing
              onChange={this.handleSaleLineChange} // handle innerHTML change
              tagName='article' // Use a custom HTML tag (uses a div by default)
              className="meta"
              style={{"backgrounColor":"red"}}
            />
-            <ContentEditable
+           <a onClick={addRow}>+</a>
+            {/* <ContentEditable
              innerRef={this.linkPlus}
-             html={this.state.linkPlus} // innerHTML of the editable div
+             html={this.state.initialLink} // innerHTML of the editable div
              disabled={false}       // use true to disable editing
              onChange={this.handleLinkPlusChange} // handle innerHTML change
              tagName='article' // Use a custom HTML tag (uses a div by default)
              className="meta"
              style={{"backgrounColor":"red"}}
-           />
+           /> */}
               <ContentEditable
              innerRef={this.totalTable}
-             html={this.state.totalTable} // innerHTML of the editable div
+             html={this.state.initialTotalTable} // innerHTML of the editable div
              disabled={false}       // use true to disable editing
              onChange={this.handleTotalTableChange} // handle innerHTML change
              tagName='article' // Use a custom HTML tag (uses a div by default)
