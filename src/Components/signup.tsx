@@ -4,6 +4,8 @@ import {  Container, CssBaseline, Avatar, Typography, Grid, TextField, FormContr
 import { Link } from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useSignupForm from "./customHooks";
+import validate from "./validateInfo";
+import "./Form.css"
 export interface SignupProps {
     
 }
@@ -53,9 +55,8 @@ const Signup = () => {
              Password:${inputs.password}
              Checkbox: ${inputs.chec}
              `);
-             
     }
-    const {inputs, handleInputChange, handleSubmit} = useSignupForm(signup);
+    const {inputs, handleInputChange, handleSubmit,error} = useSignupForm(validate);
     return ( <Container component="main" maxWidth="xs">
     <CssBaseline />
     <div className={classes.paper}>
@@ -78,8 +79,9 @@ const Signup = () => {
               fullWidth
               id="firstName"
               label="First Name"
-              autoFocus
+              autoFocus className="form-inputs"
             />
+            {error.firstName && <p>{error.firstName}</p>}
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -91,7 +93,9 @@ const Signup = () => {
               label="Last Name"
               name="lastName"
               autoComplete="lname"
+              
             />
+            {error.lastName && <p>{error.lastName}</p>}
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -103,7 +107,9 @@ const Signup = () => {
               label="Email Address"
               name="email"
               autoComplete="email"
+              
             />
+              {error.email && <p>{error.email}</p>}
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -116,7 +122,9 @@ const Signup = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+             
             />
+              {error.password && <p>{error.password}</p>}
           </Grid>
           <Grid item xs={12}>
             <FormControlLabel

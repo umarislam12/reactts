@@ -97,9 +97,9 @@ export default class MyComponent extends React.Component{
             })
           };
           // const inputEl = useRef(null);
-          addrows=()=>{
-            saleLineTable.current.insertAdjacentHTML("afterend", "		<td><a ></a><span contentEditable suppressContentEditableWarning={true}>Front End Consultation</span></td><td><a ></a><span contentEditable suppressContentEditableWarning={true}>Experience Review</span></td><td><span data-prefix>$</span><a ></a><span contentEditable suppressContentEditableWarning={true}>150.00</span></td><td><a ></a><span  contentEditable suppressContentEditableWarning={true}>4</span></td><td> <span data-prefix>$</span><a ></a><span contentEditable suppressContentEditableWarning={true}>600.00</span></td>");
-          }
+          // addrows=()=>{
+          //   saleLineTable.current.insertAdjacentHTML("afterend", "		<td><a ></a><span contentEditable suppressContentEditableWarning={true}>Front End Consultation</span></td><td><a ></a><span contentEditable suppressContentEditableWarning={true}>Experience Review</span></td><td><span data-prefix>$</span><a ></a><span contentEditable suppressContentEditableWarning={true}>150.00</span></td><td><a ></a><span  contentEditable suppressContentEditableWarning={true}>4</span></td><td> <span data-prefix>$</span><a ></a><span contentEditable suppressContentEditableWarning={true}>600.00</span></td>");
+          // }
 
 handleSubmit=(e)=>{
 e.preventDefault();
@@ -146,7 +146,7 @@ console.log(this.table.current);
              className="meta"
              style={{"backgrounColor":"red"}}
            />
-           <a onClick={addRow}>+</a>
+           {/* <a onClick={addRow}>+</a> */}
             {/* <ContentEditable
              innerRef={this.linkPlus}
              html={this.state.initialLink} // innerHTML of the editable div
