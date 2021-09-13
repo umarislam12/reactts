@@ -6,9 +6,7 @@ import {
   Route,
   Link,
   useRouteMatch,
-  useParams,
-  NavLink,
-} from "react-router-dom";
+  useParams} from "react-router-dom";
 import FilterableProductTable from "../Components/FilterTable/filterableProductTable";
 import { makeStyles } from "@material-ui/core/styles";
 import Signup from "../Components/signup";
@@ -23,8 +21,7 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import Todos from "../Components/Todos";
-import Invoice from "../Components/Invoicing/Invoice";
+import Invoice from "../Components/Invoicing/Invoice"
 import AddTodoForm from "../Components/AddTodoForm";
 
 
@@ -60,33 +57,33 @@ export default function Enter() {
             </Typography>
             <Button>
               {" "}
-              <NavLink style={{ color: "white" }} to="/hello">
+              <Link style={{ color: "white" }} to="/hello">
                 Hello
-                </NavLink>
+              </Link>
             </Button>
             <Button>
               {" "}
-              <NavLink style={{ color: "white" }} to="/signup">
+              <Link style={{ color: "white" }} to="/signup">
                 SignUp
-              </NavLink>
+              </Link>
             </Button>
             <Button>
               {" "}
-              <NavLink style={{ color: "white" }} to="/products">
+              <Link style={{ color: "white" }} to="/products">
                 Products
-              </NavLink>
+              </Link>
             </Button>
             <Button>
               {" "}
-              <NavLink style={{ color: "white" }} to="/invoice">
+              <Link style={{ color: "white" }} to="/invoice">
                 Invoice
-              </NavLink>
+              </Link>
             </Button>
             <Button>
               {" "}
-              <NavLink style={{ color: "white" }} to="/todos">
+              <Link style={{ color: "white" }} to="/todos">
                 Todos
-              </NavLink>
+              </Link>
             </Button>
           </Toolbar>
         </AppBar>
@@ -122,7 +119,7 @@ export default function Enter() {
             <Invoice />
           </Route>
           <Route path="/todos">
-            <Todos />
+            <AddTodoForm />
           </Route>
           <Route component={NotFound} />
         </Switch>
