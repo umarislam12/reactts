@@ -1,8 +1,8 @@
  // @ts-nocheck 
 
-import { render } from '@testing-library/react';
-import React,{useRef,useState,createRef} from 'react'
-import { useEffect } from 'react';
+
+import React,{createRef} from 'react'
+
 import ContentEditable from 'react-contenteditable'
 
 export default class MyComponent extends React.Component{

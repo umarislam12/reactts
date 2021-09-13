@@ -1,9 +1,9 @@
 //import  Style  from "./Invoice.module.css";
 import React from "react";
 import InvoiceHeader from "./invoiceHeader";
-import SaleLine from "./saleLine";
 
-import styled, { createGlobalStyle, css } from 'styled-components';
+
+import styled, {  css } from 'styled-components';
 import MyComponent from "./contentEditable";
 export interface InvoiceProps {
   primary:boolean;

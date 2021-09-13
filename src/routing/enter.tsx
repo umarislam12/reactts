@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from "react";
+import React,{useState} from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,7 +9,7 @@ import {
   useParams} from "react-router-dom";
 import FilterableProductTable from "../Components/FilterTable/filterableProductTable";
 import { makeStyles } from "@material-ui/core/styles";
-import Signup from "../Components/signup";
+import Authenticationforms from "../Components/Authenticaion/authenticationForms";
 import "./enter.css";
 import Hello from "../hello";
 import NotFound from "../Components/notFound";
@@ -25,6 +25,7 @@ import Invoice from "../Components/Invoicing/Invoice"
 import AddTodoForm from "../Components/AddTodoForm";
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function Enter() {
   const classes = useStyles();
+
   return (
     
     <Router>
@@ -63,8 +65,8 @@ export default function Enter() {
             </Button>
             <Button>
               {" "}
-              <Link style={{ color: "white" }} to="/signup">
-                SignUp
+              <Link style={{ color: "white" }} to="/authentication">
+             signup
               </Link>
             </Button>
             <Button>
@@ -102,12 +104,11 @@ export default function Enter() {
             </li>
           </ul>
         </nav> */}
-
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/signup">
-            <Signup />
+          <Route path="/authentication">
+            <Authenticationforms />
           </Route>
           <Route path="/hello">
             <Hello name="umar" />

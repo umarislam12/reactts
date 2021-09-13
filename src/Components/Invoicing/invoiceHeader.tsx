@@ -1,11 +1,11 @@
-import React from "react";
 
-import MyComponent from "./contentEditable"
+
+
 export interface InvoiceHeaderProps {
   
 }
  
- const InvoiceHeader = ({},{}) => {
+ const InvoiceHeader = () => {
   return ( <div><header>
 
   

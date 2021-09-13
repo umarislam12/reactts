@@ -3,8 +3,8 @@ import React from "react";
 import {  Container, CssBaseline, Avatar, Typography, Grid, TextField, FormControlLabel, Checkbox, Box, Button, makeStyles } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import useSignupForm from "./customHooks";
-import validate from "./validateInfo";
+import useSignupForm from "../customHooks";
+import validate from "../validateInfo";
 import "./Form.css"
 export interface SignupProps {
     
@@ -45,9 +45,9 @@ function Copyright() {
   
   
   
-const Signup = () => {
+const Signup = ({submitForm}) => {
     const classes = useStyles();
-    
+    console.log(submitForm);
     const signup = () => {
       alert(`User Created!
              Name: ${inputs.firstName} ${inputs.lastName}
@@ -56,7 +56,8 @@ const Signup = () => {
              Checkbox: ${inputs.chec}
              `);
     }
-    const {inputs, handleInputChange, handleSubmit,error} = useSignupForm(validate);
+
+    const {inputs, handleInputChange, handleSubmit,error} = useSignupForm(validate,signup,submitForm);
     return ( <Container component="main" maxWidth="xs">
     <CssBaseline />
     <div className={classes.paper}>

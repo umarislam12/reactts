@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react';
+
 import pokemon from '../pokemon.json';
 export default function Pokemons() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log(document.title = `You  ${count} times`);
-    
-  },[count]);
+ 
 
   return (
     <div>
