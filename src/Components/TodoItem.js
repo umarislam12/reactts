@@ -10,7 +10,7 @@ const TodoItem = ({ id, title, completed }) => {
 	};
 	const todos = useSelector((state) => state.todos);
 	const handleDelete=(e)=>{
-todos.map(todo=>todo.id)
+dispatch(deleteTodo({id}))
 	}
 	return (
 		<li className={`list-group-item ${completed && 'list-group-item-success'}`}>
