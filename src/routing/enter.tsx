@@ -22,7 +22,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import Invoice from "../Components/Invoicing/Invoice"
-import AddTodoForm from "../Components/AddTodoForm";
+import Todos from "../Components/Todos";
 
 
 
@@ -41,7 +41,7 @@ export default function Enter() {
   const classes = useStyles();
 
   return (
-    
+   
     <Router>
       <div>
         <AppBar position="static">
@@ -120,7 +120,7 @@ export default function Enter() {
             <Invoice />
           </Route>
           <Route path="/todos">
-            <AddTodoForm />
+            <Todos />
           </Route>
           <Route component={NotFound} />
         </Switch>
