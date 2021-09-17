@@ -1,5 +1,5 @@
 
-import pokemon from '../pokemon.json';
+import pokemon from '../../pokemon.json';
 export default function Pokemons() {
  
 

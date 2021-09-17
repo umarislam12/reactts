@@ -1,9 +1,10 @@
- 
+// @ts-nocheck
+import { connect } from 'react-redux';
 import * as React from 'react';
 // import PRODUCT from "../../routing/enter"
 import ProductTable from './productTable';
 import SearchBar from './searchBar';
-
+import {filterProducts,toggleStockOnly} from "../../redux/productSlice"
 export interface PRODUCTS{
   category: string,
   price: string,
@@ -20,7 +21,7 @@ interface IState{
 }
 export const ThemeContext = React.createContext('light');
 
-export default class FilterableProductTable extends React.Component <IProps, IState>{
+export class FilterableProductTable extends React.Component <IProps, IState>{
   constructor(props:any){
     super(props);
     this.state= {filterText: '', inStockOnly: false}
@@ -28,8 +29,9 @@ export default class FilterableProductTable extends React.Component <IProps, ISt
     this.handleInStockChange = this.handleInStockChange.bind(this);
   }
   handleFilterTextChange(filterText:any) {
+    
     this.setState({
-      filterText: filterText
+      filterText: ''
     });
   }
   handleInStockChange(inStockOnly:any) {
@@ -39,6 +41,8 @@ export default class FilterableProductTable extends React.Component <IProps, ISt
   }
   
   render(){
+   const {products}=this.props.products
+    console.log(this.props);
   return(<div>
     <ThemeContext.Provider value="dark">
         <SearchBar
@@ -55,3 +59,7 @@ export default class FilterableProductTable extends React.Component <IProps, ISt
    </div>
   )};
 }
+const mapStateToProps = (state:any) => ({
+  products: state.products
+});
+export default connect(mapStateToProps,{filterProducts,toggleStockOnly})(FilterableProductTable);

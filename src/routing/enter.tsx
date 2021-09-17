@@ -1,28 +1,28 @@
 // @ts-nocheck
-import React,{useState} from "react";
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  useRouteMatch,Redirect,
+  useRouteMatch,
   useParams} from "react-router-dom";
-import FilterableProductTable from "../Components/ProductsTable/filterableProductTable";
+import {FilterableProductTable} from "../Components/ProductsTable/filterableProductTable";
 import { makeStyles } from "@material-ui/core/styles";
 import Authenticationforms from "../Components/Authenticaion/authenticationForms";
 import "./enter.css";
 import Hello from "../hello";
-import NotFound from "../Components/notFound";
+import NotFound from "../Components/Home/notFound";
 import {
   AppBar,
-  Breadcrumbs,
+ 
   Button,
   IconButton,
   Toolbar,
   Typography,
 } from "@material-ui/core";
 import Invoice from "../Components/Invoicing/Invoice"
-import Todos from "../Components/Todos";
+import Todos from "../Components/Todo/Todos";
 
 
 
@@ -152,7 +152,7 @@ function Topic() {
   // console.log(useParams())
 
   let { productId }: any = useParams();
-  {
+  
     if (productId === "accessories") {
       return <FilterableProductTable products={PRODUCTS} />;
     } else {
@@ -163,9 +163,9 @@ function Topic() {
         </div>
       );
     }
-  }
+  
 }
-type PRODUCTS = {
+interface PRODUCTS {
   category: string;
   price: string;
   stocked: boolean;

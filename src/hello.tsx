@@ -4,21 +4,19 @@ import "./hello";
 import * as React from "react";
 
 import Clock from "./clock";
-import { Mood } from "./mood";
+import { Mood } from "./Components/Home/mood";
 import "./hello.css";
-import Friends from "./Components/friends";
-import Example from "./Components/counter";
-import {LoginControl } from "./Components/Greetings";
-import Pokemons from "./Components/pokemon";
-import styled, { createGlobalStyle, css } from 'styled-components';
+import Friends from "./Components/Home/friends";
+import Example from "./Components/Home/counter";
+import {LoginControl } from "./Components/Home/Greetings";
+import Pokemons from "./Components/Home/pokemon";
+import styled from 'styled-components';
 export interface Props {
   name:string;
   enthusiasmLevel?: number;
 }
 
-interface State {
-  currentEnthusiasm: number;
-}
+
 
 class Hello extends React.Component<Props, {currentEnthusiasm:number}> {
   constructor(props: Props) {
@@ -37,7 +35,7 @@ class Hello extends React.Component<Props, {currentEnthusiasm:number}> {
 `;
   render() {
    
-    const { name } = this.props;
+  
     
     if (this.state.currentEnthusiasm <= 0) {
       throw new Error('You could be a little more enthusiastic. :D');

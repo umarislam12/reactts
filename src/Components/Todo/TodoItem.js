@@ -1,6 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { toggleComplete,deleteTodo } from '../redux/todoSlice';
+import { useDispatch } from 'react-redux';
+import { toggleComplete,deleteTodo } from '../../redux/todoSlice';
 
 const TodoItem = ({ id, title, completed }) => {
 	const dispatch = useDispatch();
@@ -8,7 +8,7 @@ const TodoItem = ({ id, title, completed }) => {
 	const handleCheckboxClick = () => {
 		dispatch(toggleComplete({ id, completed: !completed }));
 	};
-	const todos = useSelector((state) => state.todos);
+	//const todos = useSelector((state) => state.todos);
 	const handleDelete=(e)=>{
 dispatch(deleteTodo({id}))
 	}

@@ -3,8 +3,8 @@ import React from "react";
 import {  Container, CssBaseline, Avatar, Typography, Grid, TextField, FormControlLabel, Checkbox, Box, Button, makeStyles } from '@material-ui/core';
 import { Link } from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import useSignupForm from "../customHooks";
-import validate from "../validateInfo";
+import useSignupForm from "./customHooks";
+import validate from "./validateInfo";
 import "./Form.css"
 export interface SignupProps {
     

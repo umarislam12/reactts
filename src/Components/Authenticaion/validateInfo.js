@@ -1,4 +1,4 @@
-import { ErrorSharp } from "@material-ui/icons"
+
 
 export default function validateInfo(inputs){
     let error={}
