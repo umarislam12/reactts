@@ -5,9 +5,9 @@ import {
   Switch,
   Route,
   Link,
-  useRouteMatch,
+  useRouteMatch,Redirect,
   useParams} from "react-router-dom";
-import FilterableProductTable from "../Components/FilterTable/filterableProductTable";
+import FilterableProductTable from "../Components/ProductsTable/filterableProductTable";
 import { makeStyles } from "@material-ui/core/styles";
 import Authenticationforms from "../Components/Authenticaion/authenticationForms";
 import "./enter.css";
@@ -81,31 +81,18 @@ export default function Enter() {
                 Invoice
               </Link>
             </Button>
+            
             <Button>
               {" "}
               <Link style={{ color: "white" }} to="/todos">
                 Todos
               </Link>
             </Button>
+          
           </Toolbar>
         </AppBar>
 
-        {/* <nav>
-          <ul className="nav">
-           
-       <button>
-             
-              </button>
-            <li>
-              <Link to="/signup">signup</Link>
-            </li>
-            <li>
-              <Link to="/products">Products</Link>
-            </li>
-          </ul>
-        </nav> */}
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
+    
         <Switch>
           <Route path="/authentication">
             <Authenticationforms />
@@ -156,9 +143,27 @@ function Products() {
         <Route path={match.path}>
           <h3>Please select a category</h3>
         </Route>
+        
       </Switch>
     </div>
   );
+}
+function Topic() {
+  // console.log(useParams())
+
+  let { productId }: any = useParams();
+  {
+    if (productId === "accessories") {
+      return <FilterableProductTable products={PRODUCTS} />;
+    } else {
+      return (
+        <div>
+          <h1>Here is your selected Products</h1>
+          <h3>Requested product ID: {productId}</h3>
+        </div>
+      );
+    }
+  }
 }
 type PRODUCTS = {
   category: string;
@@ -199,20 +204,4 @@ export const PRODUCTS: PRODUCTS[] = [
   },
   { category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7" },
 ];
-function Topic() {
-  // console.log(useParams())
 
-  let { productId }: any = useParams();
-  {
-    if (productId === "accessories") {
-      return <FilterableProductTable products={PRODUCTS} />;
-    } else {
-      return (
-        <div>
-          <h1>Here is your selected Products</h1>
-          <h3>Requested product ID: {productId}</h3>
-        </div>
-      );
-    }
-  }
-}
