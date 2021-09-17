@@ -41,8 +41,8 @@ export class FilterableProductTable extends React.Component <IProps, IState>{
   }
   
   render(){
-   const {products}=this.props.products
-    console.log(this.props);
+   
+    console.log(this.props.prods);
   return(<div>
     <ThemeContext.Provider value="dark">
         <SearchBar
@@ -60,6 +60,6 @@ export class FilterableProductTable extends React.Component <IProps, IState>{
   )};
 }
 const mapStateToProps = (state:any) => ({
-  products: state.products
+  prods: state.products
 });
 export default connect(mapStateToProps,{filterProducts,toggleStockOnly})(FilterableProductTable);

@@ -15,7 +15,7 @@ export interface InvoiceHeaderProps {
 				<p>101 E. Chapman Ave<br/>Orange, CA 92866</p>
 				<p>(800) 555-1234</p>
 			</address>
-			<span className="img"><img alt="" src="http://www.jonathantneal.com/examples/invoice/logo.png"/><input type="file" accept="image/*"/></span>
+			{/* <span className="img"><img alt="" src="http://www.jonathantneal.com/examples/invoice/logo.png"/><input type="file" accept="image/*"/></span> */}
 	
       </header> 
       

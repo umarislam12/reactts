@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const productSlice = createSlice({
 	name: 'product',
-	initialState: [
+	initialState: 
 		{filterText: '', inStockOnly: false}
-	],
+	,
 	reducers: {
 		filterProducts: (state, action) => {
 	
