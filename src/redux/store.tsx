@@ -8,7 +8,7 @@ export const store = configureStore({
     // comments: commentsReducer,
     // users: usersReducer,
     todos:todoReducer,
-    products:productReducer
+    prods:productReducer
   },
 })
 

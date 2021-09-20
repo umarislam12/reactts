@@ -4,7 +4,9 @@ import * as React from 'react';
 // import PRODUCT from "../../routing/enter"
 import ProductTable from './productTable';
 import SearchBar from './searchBar';
-//import {filterProducts,toggleStockOnly} from "../../redux/productSlice"
+
+import {filterProducts,toggleStock} from "../../redux/productSlice";
+
 export interface PRODUCTS{
   category: string,
   price: string,
@@ -25,6 +27,7 @@ export class FilterableProductTable extends React.Component <IProps, IState>{
   constructor(props:any){
     super(props);
     this.state= {filterText: '', inStockOnly: false}
+    console.log(this.props)
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
     this.handleInStockChange = this.handleInStockChange.bind(this);
   }
@@ -41,8 +44,8 @@ export class FilterableProductTable extends React.Component <IProps, IState>{
   }
   
   render(){
-   
-    console.log(this.props.prods);
+    // const {prods} = this.props.prods;
+    // console.log("I have",prods);
   return(<div>
     <ThemeContext.Provider value="dark">
         <SearchBar
@@ -56,10 +59,26 @@ export class FilterableProductTable extends React.Component <IProps, IState>{
           filterText={this.state.filterText}
           inStockOnly={this.state.inStockOnly}/>
       </ThemeContext.Provider>
+      
+      <h1>we have </h1>
+      <button onClick={this.props.toggleStock}>toggleme</button>
    </div>
   )};
 }
-// const mapStateToProps = (state:any) => ({
-//   prods: state.products
-// });
-// export default connect(mapStateToProps,{filterProducts,toggleStockOnly})(FilterableProductTable);
+const mapStateToProps = (state:any) => {
+  // const {prods}=state;
+  console.log("We have",prods);
+  return{
+ prods:state.prods
+
+};
+}
+const mapDispatchToProps=dispatch=>{
+
+return {
+  //filterProducts:(e)=>dipatch(filterProducts(e)),
+  
+  toggleStock:(e)=>dispatch(toggleStock(e))
+}
+}
+export default connect(mapStateToProps,null)(FilterableProductTable);

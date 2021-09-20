@@ -1,20 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const productSlice = createSlice({
-	name: 'product',
+	name: 'prods',
 	initialState: 
-		{filterText: '', inStockOnly: false}
+		{filterText: '', inStock: false}
 	,
 	reducers: {
-		filterProducts: (state, action) => {
-	
+		filterProds: (state, action) => {
 		},
-		toggleStockOnly: (state, action) => {
-		state=action.payload
+		toggleStock: (state, action) => {
+	state.inStock=!action.payload.inStock;
+	console.log("action was dispatched")
 	}
 }
 })
 
-export const { filterProducts, toggleStockOnly } = productSlice.actions;
+export const { filterProds, toggleStock } = productSlice.actions;
 
 export default productSlice.reducer;
