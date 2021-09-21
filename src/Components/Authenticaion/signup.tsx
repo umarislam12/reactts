@@ -6,6 +6,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useSignupForm from "./customHooks";
 import validate from "./validateInfo";
 import "./Form.css"
+import GoogleLoginComponent from "./googleLogin";
 export interface SignupProps {
     
 }
@@ -149,8 +150,17 @@ const Signup = ({submitForm}) => {
               Already have an account? Sign in
             </Link>
           </Grid>
+         
+          
         </Grid>
+        
       </form>
+      <br/>
+      {/* <Grid container justifyContent="flex-end">
+         <Grid item>
+          <GoogleLoginComponent/>
+          </Grid>
+        </Grid> */}
     </div>
     <Box mt={5}>
       <Copyright />

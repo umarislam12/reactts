@@ -4,7 +4,7 @@ import * as React from 'react';
 // import PRODUCT from "../../routing/enter"
 import ProductTable from './productTable';
 import SearchBar from './searchBar';
-
+import {State} from '../../redux/store'
 import {filterProducts,toggleStock} from "../../redux/productSlice";
 
 export interface PRODUCTS{
@@ -60,18 +60,18 @@ export class FilterableProductTable extends React.Component <IProps, IState>{
           inStockOnly={this.state.inStockOnly}/>
       </ThemeContext.Provider>
       
-      <h1>we have </h1>
-      <button onClick={this.props.toggleStock}>toggleme</button>
+      <h1>we have{this.props.prods}</h1>
+      <button onClick={this.props.prods}>toggleme</button>
    </div>
   )};
 }
-const mapStateToProps = (state:any) => {
+const mapStateToProps = (state) => {
   // const {prods}=state;
-  console.log("We have",prods);
+  console.log("We have",state);
   return{
- prods:state.prods
+ prods:state.prods.filterText
 
-};
+}
 }
 const mapDispatchToProps=dispatch=>{
 
