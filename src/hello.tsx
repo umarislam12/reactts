@@ -19,6 +19,7 @@ export interface Props {
 
 
 class Hello extends React.Component<Props, {currentEnthusiasm:number}> {
+  
   constructor(props: Props) {
     super(props);
     
@@ -34,8 +35,7 @@ class Hello extends React.Component<Props, {currentEnthusiasm:number}> {
   color: ${props => props.theme.colors.main};
 `;
   render() {
-   
-  
+ 
     
     if (this.state.currentEnthusiasm <= 0) {
       throw new Error('You could be a little more enthusiastic. :D');

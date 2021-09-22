@@ -1,4 +1,6 @@
 import React from "react";
+import  dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat'
 class Clock extends React.Component <{}, { date: Date }>{
   timerID: number | undefined;
   constructor(props:any) {
@@ -10,6 +12,10 @@ class Clock extends React.Component <{}, { date: Date }>{
       () => this.tick(),
       1000
     );
+   
+  
+    console.log(dayjs);   
+    // console.log(location.pathname)
   }
 
   componentWillUnmount() {
@@ -26,6 +32,7 @@ class Clock extends React.Component <{}, { date: Date }>{
       <div>
    
         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <p>date is {dayjs(this.state.date).format('DD/MM/YYYY')}</p>
       </div>
     );
   }
