@@ -23,6 +23,7 @@ import {
 } from "@material-ui/core";
 import Invoice from "../Components/Invoicing/Invoice"
 import Todos from "../Components/Todo/Todos";
+import Leaves from "../Leaves/Leaves";
 
 
 
@@ -88,6 +89,12 @@ export default function Enter() {
                 Todos
               </Link>
             </Button>
+            <Button>
+              {" "}
+              <Link style={{ color: "white" }} to="/leaves">
+                Todos
+              </Link>
+            </Button>
           
           </Toolbar>
         </AppBar>
@@ -108,6 +115,9 @@ export default function Enter() {
           </Route>
           <Route path="/todos">
             <Todos />
+          </Route>
+          <Route path="/leaves">
+            <Leaves />
           </Route>
           <Route component={NotFound} />
         </Switch>

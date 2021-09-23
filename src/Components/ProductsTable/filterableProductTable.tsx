@@ -5,7 +5,7 @@ import * as React from 'react';
 import ProductTable from './productTable';
 import SearchBar from './searchBar';
 
-import {filterProducts,toggleStock} from "../../redux/productSlice";
+import {toggleStock} from "../../redux/productSlice";
 
 export interface PRODUCTS{
   category: string,
