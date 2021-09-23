@@ -11,13 +11,15 @@ export default function Leaves() {
       .toString();
 
     console.log(date);
-    console.log(time);
+  
     shortLeave: localStorage.setItem("shortLeave", time);
     
    
-  }, [shortLeave]);
+  }, []);
+  
+ 
   //setshortLeave( ()=>localStorage.setItem("shortLeave", time))
   return <div>
-      <p>short leave was on: {shortLeave}</p>
+      <p>short leave was on: {localStorage.getItem("shortLeave")}</p>
   </div>;
 }

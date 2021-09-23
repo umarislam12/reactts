@@ -16,6 +16,7 @@ interface IProps{
 }
 
 export default class ProductRow extends React.Component<IProps> {
+ 
   render() {
     const product = this.props.products;
     const name = product.stocked ?

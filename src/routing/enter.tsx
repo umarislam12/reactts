@@ -92,7 +92,7 @@ export default function Enter() {
             <Button>
               {" "}
               <Link style={{ color: "white" }} to="/leaves">
-                Todos
+                Leaves
               </Link>
             </Button>
           
@@ -128,7 +128,9 @@ export default function Enter() {
 }
 function Products() {
   let match = useRouteMatch();
+
   console.log(match);
+  
   return (
     <div>
       <h2>types of products </h2>
@@ -140,6 +142,7 @@ function Products() {
         <li>
           <Link to={`${match.url}/essentials`}>Essentials</Link>
         </li>
+        
       </ul>
 
       {/* The Topics page has its own <Switch> with more routes
@@ -164,7 +167,7 @@ function Topic() {
   let { productId }: any = useParams();
   
     if (productId === "accessories") {
-      return <FilterableProductTable products={PRODUCTS} />;
+      return <FilterableProductTable products={PRODUCTS} productId={productId}/>;
     } else {
       return (
         <div>
