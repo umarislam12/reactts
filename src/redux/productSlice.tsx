@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const productSlice = createSlice({
 	name: 'prods',
 	initialState: 
-		{filterText: '', inStock: false}
+		{filterText: 'hi', inStock: false}
 	,
 	reducers: {
 		filterProds: (state, action) => {

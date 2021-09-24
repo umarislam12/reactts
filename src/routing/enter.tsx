@@ -6,7 +6,7 @@ import {
   Route,
   Link,
   useRouteMatch,
-  useParams} from "react-router-dom";
+  useParams, useLocation} from "react-router-dom";
 import {FilterableProductTable} from "../Components/ProductsTable/filterableProductTable";
 import { makeStyles } from "@material-ui/core/styles";
 import Authenticationforms from "../Components/Authenticaion/authenticationForms";
@@ -24,6 +24,7 @@ import {
 import Invoice from "../Components/Invoicing/Invoice"
 import Todos from "../Components/Todo/Todos";
 import Leaves from "../Leaves/Leaves";
+import Product from "../Components/ProductsTable/product";
 
 
 
@@ -129,7 +130,7 @@ export default function Enter() {
 function Products() {
   let match = useRouteMatch();
 
-  console.log(match);
+  console.log("routeMatch in Products",match);
   
   return (
     <div>
@@ -145,27 +146,33 @@ function Products() {
         
       </ul>
 
-      {/* The Topics page has its own <Switch> with more routes
-          that build on the /topics URL path. You can think of the
-          2nd <Route> here as an "index" page for all topics, or
-          the page that is shown when no topic is selected */}
+      {/* The Products page has its own <Switch> with more routes
+          that build on the /Products URL path. You can think of the
+          2nd <Route> here as an "index" page for all product types, or
+          the page that is shown when no product type is selected */}
       <Switch>
         <Route path={`${match.path}/:productId`}>
-          <Topic />
+          <ProductType />
         </Route>
         <Route path={match.path}>
           <h3>Please select a category</h3>
         </Route>
-        
+        <Route path={`${match.path}/:productId/product`}>
+          <Product/>
+        </Route>
       </Switch>
     </div>
   );
 }
-function Topic() {
+function ProductType() {
   // console.log(useParams())
-
-  let { productId }: any = useParams();
   
+  let { productId }: any = useParams();
+  let location:any=useLocation();
+  let match = useRouteMatch();
+  console.log("params",productId);
+  console.log("location",location);
+  console.log("userouteMatch in productType",match)
     if (productId === "accessories") {
       return <FilterableProductTable products={PRODUCTS} productId={productId}/>;
     } else {

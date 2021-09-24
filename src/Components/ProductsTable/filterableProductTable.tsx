@@ -24,6 +24,8 @@ interface IState{
 export const ThemeContext = React.createContext('light');
 
 export class FilterableProductTable extends React.Component <IProps, IState>{
+
+  
   constructor(props:any){
     super(props);
     this.state= {filterText: '', inStockOnly: false}
@@ -72,7 +74,7 @@ const mapStateToProps = (state) => {
   // const {prods}=state;
   console.log("We have",state);
   return{
- prods:state.prods.filterText,
+ prods:state?.prods?.filterText|"1",
  todos:state.todos.id
 
 

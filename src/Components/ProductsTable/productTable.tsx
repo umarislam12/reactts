@@ -3,7 +3,7 @@ import * as React from "react";
 import ProductRow from "./productRow";
 import { ThemeContext } from "./filterableProductTable";
 import ProductCategoryRow from "./productCategoryRow";
-import { useParams } from "react-router";
+
 
 export interface PRODUCTS {
   category: string;
@@ -50,6 +50,7 @@ export default class ProductTable extends React.Component<IProps> {
           inStockOnly={inStockOnly}
           products={product}
           key={product.name}
+
         />
       );
       lastCategory = product.category;
@@ -68,6 +69,7 @@ export default class ProductTable extends React.Component<IProps> {
           </thead>
           <tbody>{rows}</tbody>
         </table>
+      
       </div>
     );
   }
