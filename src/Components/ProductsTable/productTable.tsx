@@ -19,10 +19,7 @@ interface IProps {
 
 export default class ProductTable extends React.Component<IProps> {
 
-  constructor(props){
-    super(props)
-    
-  }
+  
   render() {
     const filterText = this.props.filterText;
     const inStockOnly = this.props.inStockOnly;

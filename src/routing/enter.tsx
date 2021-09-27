@@ -195,19 +195,19 @@ function ProductType() {
   
 }
 function ProductName(){
-  let match = useRouteMatch();
+ 
   return (
 
-    <div>I am inside enter</div>
+    <div><Product/></div>
   )
 }
-interface PRODUCTS {
+interface PRODUCT {
   category: string;
   price: string;
   stocked: boolean;
   name: string;
 };
-export const PRODUCTS: PRODUCTS[] = [
+export const PRODUCTS: PRODUCT[] = [
   {
     category: "Sporting Goods",
     price: "$49.99",

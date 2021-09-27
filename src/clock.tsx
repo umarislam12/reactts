@@ -20,7 +20,7 @@ class Clock extends React.Component<{}, { date: Date }> {
     console.log(time);
 
     this.setState((state) => {
-      shortLeave: localStorage.setItem("shortLeave", time);
+       localStorage.setItem("shortLeave", time);
     });
 
     // console.log(location.pathname)

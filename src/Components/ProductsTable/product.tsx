@@ -1,22 +1,28 @@
-import React from 'react';
-import { Route ,useParams} from 'react-router-dom';
+// @ts-nocheck
 
-export default function Product() {
-const params=useParams()
-console.log(params)
+
+import { useParams,withRouter,useLocation} from 'react-router-dom';
+
+
+// {location:{state:{price,stocked,category}}}
+function Product() {
+const params=useParams();
+const location=useLocation()
+console.log("use location in products",location)
+console.log("params in product",params)
+
+ 
   return (
     <div className="container">
-      
-       {/* <Route
-      path="/blog/:slug"
-      render={({ match }) => {
-        
-        // Do whatever you want with the match...
-        return <div>I am products inside route</div >;
-      }}
-    /> */}
+      <h1>{params.productName}</h1>
+      <h1>i am{location.state.category}</h1>
+      <h2>I cost {location.state.price}</h2>
 
-    <p>I am product</p>
+      
+      
+
+  
     </div>
   )
 }
+export default withRouter(Product);

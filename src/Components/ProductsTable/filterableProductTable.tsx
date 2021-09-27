@@ -80,12 +80,12 @@ const mapStateToProps = (state) => {
 
 }
 }
-const mapDispatchToProps=dispatch=>{
+// const mapDispatchToProps=dispatch=>{
 
-return {
-  //filterProducts:(e)=>dipatch(filterProducts(e)),
+// return {
+//   //filterProducts:(e)=>dipatch(filterProducts(e)),
   
-  toggleStock:(e)=>dispatch(toggleStock(e))
-}
-}
+//   toggleStock:(e)=>dispatch(toggleStock(e))
+// }
+// }
 export default connect(mapStateToProps,null)(FilterableProductTable);
