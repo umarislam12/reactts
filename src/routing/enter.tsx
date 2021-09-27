@@ -154,11 +154,9 @@ function Products() {
         <Route path={`${match.path}/:productId`}>
           <ProductType />
         </Route>
+       
         <Route path={match.path}>
           <h3>Please select a category</h3>
-        </Route>
-        <Route path={`${match.path}/:productId/product`}>
-          <Product/>
         </Route>
       </Switch>
     </div>
@@ -174,16 +172,34 @@ function ProductType() {
   console.log("location",location);
   console.log("userouteMatch in productType",match)
     if (productId === "accessories") {
-      return <FilterableProductTable products={PRODUCTS} productId={productId}/>;
+      return (<div>
+        <Switch>
+          <Route exact path={`${match.path}`}>
+          <FilterableProductTable products={PRODUCTS} productId={productId}/>
+          </Route>
+            <Route exact path={`${match.path}/:productName`}>
+          <ProductName/>
+        </Route>
+        </Switch>
+      </div>)
     } else {
       return (
         <div>
+     
           <h1>Here is your selected Products</h1>
           <h3>Requested product ID: {productId}</h3>
+         
         </div>
       );
     }
   
+}
+function ProductName(){
+  let match = useRouteMatch();
+  return (
+
+    <div>I am inside enter</div>
+  )
 }
 interface PRODUCTS {
   category: string;

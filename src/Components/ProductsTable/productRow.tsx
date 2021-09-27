@@ -1,7 +1,6 @@
 // @ts-nocheck
 import { withRouter } from "react-router";
-import React from "react";
-import { Route } from "react-router";
+
 export interface PRODUCTS{
   category: string,
   price: string,
@@ -15,8 +14,9 @@ interface IProps{
   key:any;
 }
 
- function ProductRow (props,{history}){
- console.log(props)
+ function ProductRow (props){
+ console.log("props.match.url in prodRow",props.match.url);
+
   
     //const product = products;
     const name = props.products.stocked ?
@@ -25,11 +25,11 @@ interface IProps{
         {props.products.name}
       </span>;
 const handleClick=()=>{
-history.push(`/${props.producs.name}`)
+props.history.push(`${props.match.url}/${props.products.name}`)
 }
     return (
     
-      <tr onClick={handleClick}>
+      <tr onClick={handleClick} style={{cursor:'pointer'}}>
          
         <td>{props.products.name}</td>
         <td>{props.products.price}</td>
