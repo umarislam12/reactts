@@ -48,7 +48,7 @@ export class FilterableProductTable extends React.Component <IProps, IState>{
   
   render(){
     // const {prods} = this.props.prods;
-    // console.log("I have",prods);
+    console.log("I have",this?.props?.prods?.instock);
   return(<div>
     <ThemeContext.Provider value="dark">
         <SearchBar
@@ -64,18 +64,18 @@ export class FilterableProductTable extends React.Component <IProps, IState>{
           inStockOnly={this.state.inStockOnly}/>
       </ThemeContext.Provider>
       
-      <h1>we have{this.props.prods}</h1>
-      <h1>we have{this.props.todos}</h1>
+      <h1>we have{this.props?.prods}</h1>
+      <h1>we have{this.props?.todos}</h1>
       <button onClick={this.props.prods}>toggleme</button>
    </div>
   )};
 }
 const mapStateToProps = (state) => {
   // const {prods}=state;
-  console.log("We have",state);
+  console.log("We have in filterable product table",state);
   return{
- prods:state?.prods?.filterText|"1",
- todos:state.todos.id
+    prods:state?.prods,
+    todos:state.todos
 
 
 }
@@ -88,4 +88,4 @@ const mapStateToProps = (state) => {
 //   toggleStock:(e)=>dispatch(toggleStock(e))
 // }
 // }
-export default connect(mapStateToProps,null)(FilterableProductTable);
+export default connect(mapStateToProps)(FilterableProductTable);

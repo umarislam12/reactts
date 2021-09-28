@@ -5,11 +5,11 @@ import { useParams,withRouter,useLocation} from 'react-router-dom';
 
 
 // {location:{state:{price,stocked,category}}}
-function Product() {
+function Product(props) {
 const params=useParams();
 const location=useLocation()
-console.log("use location in products",location)
-console.log("params in product",params)
+console.log("use location.search in products",location.search)
+console.log("props in product",props)
 
  
   return (

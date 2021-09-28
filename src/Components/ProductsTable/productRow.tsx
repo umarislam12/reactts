@@ -16,7 +16,7 @@ interface IProps{
 
  function ProductRow (props:IProps){
 const{price, category,stocked}=props.products;
-console.log(price,category,stocked);
+
 // console.log("props in product row", props)
   
     //const product = products;

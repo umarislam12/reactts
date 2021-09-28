@@ -130,7 +130,7 @@ export default function Enter() {
 function Products() {
   let match = useRouteMatch();
 
-  console.log("routeMatch in Products",match);
+ // console.log("routeMatch in Products",match);
   
   return (
     <div>
@@ -168,9 +168,9 @@ function ProductType() {
   let { productId }: any = useParams();
   let location:any=useLocation();
   let match = useRouteMatch();
-  console.log("params",productId);
-  console.log("location",location);
-  console.log("userouteMatch in productType",match)
+  // console.log("params",productId);
+   console.log("location",location);
+  // console.log("userouteMatch in productType",match)
     if (productId === "accessories") {
       return (<div>
         <Switch>
