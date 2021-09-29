@@ -1,5 +1,5 @@
 // @ts-nocheck
-
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,11 +22,12 @@ import Product from "../Components/ProductsTable/product";
 import Navbar from "./navbar";
 
 export default function Enter() {
+  const [login, setLogin] = useState(false)
   return (
     <Router>
       <div>
         <Navbar />
-
+<button onClick={()=>setLogin(!login)}>{login?"logout":"login"}</button>
         <Switch>
           <Route path="/authentication">
             <Authenticationforms />
