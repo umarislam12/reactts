@@ -6,101 +6,27 @@ import {
   Route,
   Link,
   useRouteMatch,
-  useParams, useLocation} from "react-router-dom";
-import {FilterableProductTable} from "../Components/ProductsTable/filterableProductTable";
-import { makeStyles } from "@material-ui/core/styles";
+  useParams,
+  useLocation,
+} from "react-router-dom";
+import { FilterableProductTable } from "../Components/ProductsTable/filterableProductTable";
 import Authenticationforms from "../Components/Authenticaion/authenticationForms";
 import "./enter.css";
 import Hello from "../hello";
 import NotFound from "../Components/Home/notFound";
-import {
-  AppBar,
- 
-  Button,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@material-ui/core";
-import Invoice from "../Components/Invoicing/Invoice"
+
+import Invoice from "../Components/Invoicing/Invoice";
 import Todos from "../Components/Todo/Todos";
 import Leaves from "../Leaves/Leaves";
 import Product from "../Components/ProductsTable/product";
+import Navbar from "./navbar";
 
-
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
 export default function Enter() {
-  const classes = useStyles();
-
   return (
-   
     <Router>
       <div>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-            >
-              {/* <MenuIcon /> */}
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              My first Application
-            </Typography>
-            <Button>
-              {" "}
-              <Link style={{ color: "white" }} to="/hello">
-                Hello
-              </Link>
-            </Button>
-            <Button>
-              {" "}
-              <Link style={{ color: "white" }} to="/authentication">
-             signup
-              </Link>
-            </Button>
-            <Button>
-              {" "}
-              <Link style={{ color: "white" }} to="/products">
-                Products
-              </Link>
-            </Button>
-            <Button>
-              {" "}
-              <Link style={{ color: "white" }} to="/invoice">
-                Invoice
-              </Link>
-            </Button>
-            
-            <Button>
-              {" "}
-              <Link style={{ color: "white" }} to="/todos">
-                Todos
-              </Link>
-            </Button>
-            <Button>
-              {" "}
-              <Link style={{ color: "white" }} to="/leaves">
-                Leaves
-              </Link>
-            </Button>
-          
-          </Toolbar>
-        </AppBar>
+        <Navbar />
 
-    
         <Switch>
           <Route path="/authentication">
             <Authenticationforms />
@@ -124,14 +50,13 @@ export default function Enter() {
         </Switch>
       </div>
     </Router>
-    
   );
 }
 function Products() {
   let match = useRouteMatch();
 
- // console.log("routeMatch in Products",match);
-  
+  // console.log("routeMatch in Products",match);
+
   return (
     <div>
       <h2>types of products </h2>
@@ -143,7 +68,6 @@ function Products() {
         <li>
           <Link to={`${match.url}/essentials`}>Essentials</Link>
         </li>
-        
       </ul>
 
       {/* The Products page has its own <Switch> with more routes
@@ -154,7 +78,7 @@ function Products() {
         <Route path={`${match.path}/:productId`}>
           <ProductType />
         </Route>
-       
+
         <Route path={match.path}>
           <h3>Please select a category</h3>
         </Route>
@@ -164,50 +88,49 @@ function Products() {
 }
 function ProductType() {
   // console.log(useParams())
-  
+
   let { productId }: any = useParams();
-  let location:any=useLocation();
+  let location: any = useLocation();
   let match = useRouteMatch();
   // console.log("params",productId);
-   console.log("location",location);
+  console.log("location", location);
   // console.log("userouteMatch in productType",match)
-    if (productId === "accessories") {
-      return (<div>
+  if (productId === "accessories") {
+    return (
+      <div>
         <Switch>
           <Route exact path={`${match.path}`}>
-          <FilterableProductTable products={PRODUCTS} productId={productId}/>
+            <FilterableProductTable products={products} productId={productId} />
           </Route>
-            <Route exact path={`${match.path}/:productName`}>
-          <ProductName/>
-        </Route>
+          <Route exact path={`${match.path}/:productName`}>
+            <ProductName />
+          </Route>
         </Switch>
-      </div>)
-    } else {
-      return (
-        <div>
-     
-          <h1>Here is your selected Products</h1>
-          <h3>Requested product ID: {productId}</h3>
-         
-        </div>
-      );
-    }
-  
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h1>Here is your selected Products</h1>
+        <h3>Requested product ID: {productId}</h3>
+      </div>
+    );
+  }
 }
-function ProductName(){
- 
+function ProductName() {
   return (
-
-    <div><Product/></div>
-  )
+    <div>
+      <Product />
+    </div>
+  );
 }
 interface PRODUCT {
   category: string;
   price: string;
   stocked: boolean;
   name: string;
-};
-export const PRODUCTS: PRODUCT[] = [
+}
+export const products: PRODUCT[] = [
   {
     category: "Sporting Goods",
     price: "$49.99",
@@ -240,4 +163,3 @@ export const PRODUCTS: PRODUCT[] = [
   },
   { category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7" },
 ];
-
