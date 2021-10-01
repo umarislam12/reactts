@@ -14,6 +14,7 @@ import styled from 'styled-components';
 export interface Props {
   name:string;
   enthusiasmLevel?: number;
+  currentEnthusiasm?:number
 }
 
 
@@ -25,8 +26,11 @@ class Hello extends React.Component<Props, {currentEnthusiasm:number}> {
     
     this.state = { currentEnthusiasm: 1};
   }
-  
-  onIncrement = () => this.updateEnthusiasm(this.state.currentEnthusiasm + 1);
+  //react doesnt let you modify state directly i.e this.state+1
+
+  //setState can also take functions
+  //this is better practice to avoid race condition
+  onIncrement = () =>this.setState(oldState=>({currentEnthusiasm :oldState.currentEnthusiasm+ 1})) ;
   onDecrement = () => this.updateEnthusiasm(this.state.currentEnthusiasm - 1);
   componentDidUpdate(){
     console.log(this.state.currentEnthusiasm);

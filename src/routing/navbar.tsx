@@ -73,7 +73,12 @@ return(
         Leaves
       </Link>
     </Button>
-  
+    <Button>
+      {" "}
+      <Link style={{ color: "white" }} to="/game">
+       Game
+      </Link>
+    </Button>
   </Toolbar>
 </AppBar>
 )

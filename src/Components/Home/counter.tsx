@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Calculator } from './temperatureCalculator';
-import PropTypes from 'prop-types'
+import PT from 'prop-types'
 export default function Example() {
   const [count, setCount] = useState(0);
-  Example.propTypes = {
-   theme: PropTypes.string
-  }
+ 
   
   useEffect(() => {
     if(count===5){
@@ -26,6 +24,3 @@ export default function Example() {
     </div>
   );
 }
-Example.propTypes = {
-  theme: PropTypes.string
- }

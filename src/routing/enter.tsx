@@ -20,7 +20,7 @@ import Todos from "../Components/Todo/Todos";
 import Leaves from "../Leaves/Leaves";
 import Product from "../Components/ProductsTable/product";
 import Navbar from "./navbar";
-
+import Game from "../Components/Game/Game";
 export default function Enter() {
   const [login, setLogin] = useState(false)
   return (
@@ -46,6 +46,9 @@ export default function Enter() {
           </Route>
           <Route path="/leaves">
             <Leaves />
+          </Route>
+          <Route path="/game">
+            <Game />
           </Route>
           <Route component={NotFound} />
         </Switch>

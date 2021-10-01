@@ -1,8 +1,10 @@
-//@ts-nocheck
+/// @ts-nocheck
 import React from "react";
 import dayjs from "dayjs";
-
-class Clock extends React.Component<{}, { date: Date }> {
+interface IState{
+  date:Date,shortLeave:string
+}
+class Clock extends React.Component<{}, IState> {
   timerID: number | undefined;
   constructor(props: any) {
     super(props);
@@ -33,15 +35,15 @@ class Clock extends React.Component<{}, { date: Date }> {
     this.state.shortLeave = localStorage.getItem("shortLeave");
   }
   tick() {
-    this.setState({
-      date: new Date(),
-    });
+    this.setState(oldState=>({
+      date: oldState
+    }));
   }
 
   render() {
     return (
       <div>
-        <h2>Time is: {this.state.date.toLocaleTimeString()}.</h2>
+        <h2>Time is: {this.state.date.getTime}.</h2>
         <p>short leave was on: {this.state.shortLeave}</p>
       </div>
     );
