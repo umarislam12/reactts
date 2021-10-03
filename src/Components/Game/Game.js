@@ -13,6 +13,7 @@ export class Game extends Component {
       score: 0,
       time: {},
       seconds: 50,
+      incorrect:false
     };
     this.timer = 0;
     // this.startTimer = this.startTimer.bind(this);
@@ -75,7 +76,7 @@ export class Game extends Component {
         </h1>
         {/* {this.state.time.m>0 && this.state.time.s>0 ? ( */}
           <div>
-            <h2>
+            <h2 className={this.state.incorrect?"wrong":""}>
               {this.state.num1}+{this.state.num2}{" "}
             </h2>
             <input
@@ -108,15 +109,17 @@ export class Game extends Component {
     if (event.key === "Enter") {
       const answer = parseInt(this.state.response);
       if (answer === this.state.num1 + this.state.num2) {
+      //  do something if answer is right
         this.setState((state) => ({
           score: state.score + 1,
           num1: Math.ceil(Math.random() * 10) + state.score,
           num2: Math.ceil(Math.random() * 10),
           response: "",
+          wrong:false
         }));
       } else {
-        //do something else
-        this.setState((state) => ({ response: "" }));
+        //do something else if answer is wrong
+        this.setState((state) => ({ response: "",incorrect:true }));
       }
     }
   };

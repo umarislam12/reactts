@@ -25,9 +25,13 @@ export const todoSlice = createSlice({
 			const index = state.findIndex((todo) => todo.id === action.payload.id);
 			state[index].completed = action.payload.completed;
 		},
-		deleteTodo:(state,action)=>{
-      return state.filter(todo=>todo.id!==action.payload.id)
-		}
+	// 	deleteTodo:(state,action)=>{
+    //   return state.filter(todo=>todo.id!==action.payload.id)
+	// 	}
+	deleteTodo:(state,action)=>{
+		const tasks=[...state];
+		tasks.splice(action.payload,1);
+	}
 
 	},
 });

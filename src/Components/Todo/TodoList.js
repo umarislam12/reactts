@@ -8,12 +8,12 @@ const TodoList = () => {
 	return (
 
 		<ul className='list-group'>
-			
+			<li style={{"listStyleType": "none"}}>Number of tasks:{todos.length}</li>
 			{todos.map((todo,i) => (
 				<TodoItem id={todo.id} title={todo.title} completed={todo.completed}  key={i}/>
 				
 			))}
-		
+			
 			
 		</ul>
 	);

@@ -166,7 +166,7 @@ console.log(this.table.current);
              style={{"backgrounColor":"red"}}
            /> 
             </article>
-           <button type="submit" >submit</button> 
+           <button type="submit" onClick={handleSubmit}>submit</button> 
       </form>
           
     )

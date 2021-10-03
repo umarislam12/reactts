@@ -4,7 +4,9 @@
  
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.wrong{
+	color:red
+}
 .hello button {
   margin-left: 15px;
 display: flex-column;

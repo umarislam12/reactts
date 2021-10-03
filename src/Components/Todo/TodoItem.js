@@ -24,6 +24,7 @@ dispatch(deleteTodo({id}))
 					></input>
 					{title}
 				</span>
+				{/* //passing a function into onclick */}
 				<button className='btn btn-danger' onClick={handleDelete}>Delete</button>
 			</div>
 		</li>
