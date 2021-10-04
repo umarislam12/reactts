@@ -1,12 +1,16 @@
+//@ts-nocheck
 import {
   AppBar,
  
   Button,
   IconButton,
   Toolbar,
+
   Typography,
+  
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,8 +25,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function Navabar() {
+
+
    const classes = useStyles();
+   
 return(
+  <>
   <AppBar position="static">
   <Toolbar>
     <IconButton
@@ -36,6 +44,12 @@ return(
     <Typography variant="h6" className={classes.title}>
       My first Application
     </Typography>
+    <Button>
+      {" "}
+      <Link style={{ color: "white" }} to="/form">
+       Form
+      </Link>
+    </Button>
     <Button>
       {" "}
       <Link style={{ color: "white" }} to="/hello">
@@ -73,14 +87,30 @@ return(
         Leaves
       </Link>
     </Button>
-    <Button>
+    <Button 
+    // onMouseOver={handleOpenMenu}
+    aria-controls='menu'>
       {" "}
       <Link style={{ color: "white" }} to="/game">
        Game
       </Link>
     </Button>
+    <Button 
+    // onMouseOver={handleOpenMenu}
+    aria-controls='menu'>
+      {" "}
+      <Link style={{ color: "white" }} to="/flashcard">
+       Flash cards
+      </Link>
+    </Button>
   </Toolbar>
 </AppBar>
+{/* <Menu id='menu' anchorEl={anchorEl}
+onClose={handleMenuClose}
+open={Boolean(anchorEl)}>
+<MenuList></MenuList>
+</Menu> */}
+</>
 )
 
 

@@ -21,6 +21,8 @@ import Leaves from "../Leaves/Leaves";
 import Product from "../Components/ProductsTable/product";
 import Navbar from "./navbar";
 import Game from "../Components/Game/Game";
+import FlashCard from "../Components/Game/FlashCard";
+import Form from "../Components/Form/Form";
 export default function Enter() {
   const [login, setLogin] = useState(false)
   return (
@@ -31,6 +33,9 @@ export default function Enter() {
         <Switch>
           <Route path="/authentication">
             <Authenticationforms />
+          </Route>
+          <Route path="/form">
+            <Form name="umar" />
           </Route>
           <Route path="/hello">
             <Hello name="umar" />
@@ -49,6 +54,9 @@ export default function Enter() {
           </Route>
           <Route path="/game">
             <Game />
+          </Route>
+          <Route path="/flashcard">
+            <FlashCard />
           </Route>
           <Route component={NotFound} />
         </Switch>
