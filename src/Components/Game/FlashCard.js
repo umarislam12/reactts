@@ -8,7 +8,7 @@ export default class FlashCard extends Component {
     this.state = {
       editor: true,
       cards: [
-      
+      {front:"1+2",back:3},{front:"2+2",back:"4"}
       ],
     };
   }
@@ -23,7 +23,9 @@ export default class FlashCard extends Component {
             addCard={this.addCard}
           />
         ) : (
-          <FlashcardViewer switchMode={this.switchMode} />
+          <FlashcardViewer 
+          cards={this.state.cards}
+          switchMode={this.switchMode} />
         )}
       </div>
     );

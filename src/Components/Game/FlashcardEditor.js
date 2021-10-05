@@ -7,6 +7,7 @@ export default class FlashcardEditor extends Component {
       front:"",
       back:""
     }
+  
   }
   render() {
     const rows = this.props.cards.map((card, i) => (
