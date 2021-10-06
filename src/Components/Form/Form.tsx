@@ -218,6 +218,30 @@ export default function CustomForm() {
               variant="filled"
             />
           </FormGroup>
+          <FormGroup>
+            <FormControl>
+              <InputLabel htmlFor="date-time">Password</InputLabel>
+              <Input
+                name="password"
+                value={Form.password}
+                id="phone"
+                aria-describedby="my-helper-text"
+              />
+              <FormHelperText id="password">Enter password</FormHelperText>
+            </FormControl>
+          </FormGroup>
+          <FormGroup>
+            <FormControl>
+              <InputLabel htmlFor="confirmpassword">Confirm password</InputLabel>
+              <Input
+                name="confirmpassword"
+                value={Form.confirmpassword}
+                id="confirmpassword"
+                aria-describedby="my-helper-text"
+              />
+              <FormHelperText id="password">Confirm password</FormHelperText>
+            </FormControl>
+          </FormGroup>
         </Stack>
       </LocalizationProvider>
     </div>
