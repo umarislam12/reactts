@@ -12,14 +12,16 @@ export default function Leaves() {
 
     console.log(date);
   
-    shortLeave: localStorage.setItem("shortLeave", time);
-    
-   
+     localStorage.setItem("shortLeave", time);
+  
+    //shortLeave:localStorage.getItem("shortLeave")
   }, []);
   
  
   //setshortLeave( ()=>localStorage.setItem("shortLeave", time))
   return <div>
       <p>short leave was on: {localStorage.getItem("shortLeave")}</p>
+      <p>short leave was on: {shortLeave}</p>
+
   </div>;
 }

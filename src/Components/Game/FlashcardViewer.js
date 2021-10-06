@@ -20,7 +20,7 @@ export default class FlashcardViewer extends Component {
    var front = this.props.cards.map((card, i) => (
       <div key={i}> {card.front}</div>
     ));
-  ;
+  
     const back = this.props.cards.map((card, i) => (
       <div key={i}>{card.back}</div>
     ));

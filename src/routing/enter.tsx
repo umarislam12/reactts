@@ -29,7 +29,7 @@ export default function Enter() {
     <Router>
       <div>
         <Navbar />
-<button onClick={()=>setLogin(!login)}>{login?"logout":"login"}</button>
+{/* <button onClick={()=>setLogin(!login)}>{login?"logout":"login"}</button> */}
         <Switch>
           <Route path="/authentication">
             <Authenticationforms />

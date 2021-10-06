@@ -6,7 +6,7 @@ export default function Example() {
  
   
   useEffect(() => {
-    if(count===5){
+    if(count===10){
       throw Error
     }
     console.log(document.title = `You  ${count} times which is less than 5`);
