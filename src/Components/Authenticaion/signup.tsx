@@ -59,6 +59,7 @@ const Signup = ({submitForm}) => {
     }
 
     const {inputs, handleInputChange, handleSubmit,error} = useSignupForm(validate,signup,submitForm);
+    // console.log(useSignupForm(validate,signup,submitForm))
     return ( <Container component="main" maxWidth="xs">
     <CssBaseline />
     <div className={classes.paper}>
