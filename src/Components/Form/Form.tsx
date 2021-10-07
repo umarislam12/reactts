@@ -14,10 +14,21 @@ import DateTimePicker from "@mui/lab/DateTimePicker";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 import Box from "@mui/material/Box";
 import FormLabel from "@mui/material/FormLabel";
 import Checkbox from "@mui/material/Checkbox";
+import Button from "@mui/material/Button";
+
+
+// const useStyle=makeStyles(theme=>({
+//   formControl:100
+// }))
+ 
+
 export default function CustomForm() {
+  // const classes=useStyle()
   const handleChange = (event: SelectChangeEvent) => {
     setProvince(event.target.value);
   };
@@ -44,12 +55,13 @@ export default function CustomForm() {
     cnicvalue: "",
     phone: "",
     province: "",
+    game:"",
     email: "",
     dobvalue: "",
   };
   const [data, setData] = useState(Form);
   console.log(data);
-
+  
   //   const onSelectFile = e => {
   //     if (!e.target.files || e.target.files.length === 0) {
   //         setSelectedFile(undefined)
@@ -67,119 +79,147 @@ export default function CustomForm() {
   return (
     <div>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <Stack spacing={3}>
-          <FormGroup>
-            <FormControl>
-              <InputLabel htmlFor="my-firstname">First name</InputLabel>
-              <Input
-                value={Form.firstName}
-                name="firstName"
-                id="my-firstname"
-                aria-describedby="my-helper-text"
-              />
-              <FormHelperText id="my-firstname">
-                Please enter first name
-              </FormHelperText>
-            </FormControl>
-          </FormGroup>
-          {/* <div>
-            <input type='file' onChange={onSelectFile} />
-            {selectedFile &&  <img src={preview} /> }
-        </div> */}
-          <FormGroup>
-            <FormControl>
-              <InputLabel htmlFor="my-lastname">Last name</InputLabel>
-              <Input
-                value={Form.lastName}
-                name="lastName"
-                id="my-lastname"
-                aria-describedby="my-helper-text"
-              />
-              <FormHelperText id="my-lastname">
-                Please enter last name
-              </FormHelperText>
-            </FormControl>
-          </FormGroup>
+        <Stack margin={5}>
+          <Stack spacing={3} direction="column" width="50%">
+            <FormGroup>
+              <FormControl>
+                <InputLabel htmlFor="my-firstname">First name</InputLabel>
+                <Input
+                  value={Form.firstName}
+                  name="firstName"
+                  id="my-firstname"
+                  aria-describedby="my-helper-text"
+                />
+                <FormHelperText id="my-firstname">
+                  Please enter first name
+                </FormHelperText>
+              </FormControl>
+            </FormGroup>
 
-          <FormGroup>
-            <FormControl>
-              <InputLabel htmlFor="my-cnic">CNIC</InputLabel>
-              <Input
-                value={Form.cnic}
-                name="cnic"
-                placeholder="XXXXX-XXXXXXX-X"
-                id="my-cnic"
-                aria-describedby="my-helper-text"
-              />
-              <FormHelperText id="my-cnict">Please CNIC</FormHelperText>
-            </FormControl>
-          </FormGroup>
+            <FormGroup>
+              <FormControl>
+                <InputLabel htmlFor="my-lastname">Last name</InputLabel>
+                <Input
+                  value={Form.lastName}
+                  name="lastName"
+                  id="my-lastname"
+                  aria-describedby="my-helper-text"
+                />
+                <FormHelperText id="my-lastname">
+                  Please enter last name
+                </FormHelperText>
+              </FormControl>
+            </FormGroup>
 
-          {/* <FormGroup>
-        <FormControl>
-          <InputLabel htmlFor="date-time">CNIC Issued Date and Time</InputLabel>
-          <Input type="date/time" id="date" aria-describedby="my-helper-text" />
-          <FormHelperText id="my-cnic">Please CNIC</FormHelperText>
-        </FormControl>
-      </FormGroup> */}
-          <DateTimePicker
-            name="cnic"
-            label="CNIC issued Date and Time"
-            value={Form.cnicvalue}
-            onChange={handleCnicChange}
-            renderInput={(params) => <TextField {...params} />}
-          />
+            <FormGroup>
+              <FormControl>
+                <InputLabel htmlFor="my-cnic">CNIC</InputLabel>
+                <Input
+                  value={Form.cnic}
+                  name="cnic"
+                  placeholder="XXXXX-XXXXXXX-X"
+                  id="my-cnic"
+                  aria-describedby="my-helper-text"
+                />
+                <FormHelperText id="my-cnict">Please enter CNIC</FormHelperText>
+              </FormControl>
+            </FormGroup>
 
-          <FormGroup>
-            <FormControl>
-              <InputLabel htmlFor="date-time">Phone number</InputLabel>
-              <Input
-                name="phone"
-                value={Form.phone}
-                id="phone"
-                aria-describedby="my-helper-text"
-              />
-              <FormHelperText id="phone">Add phone number</FormHelperText>
-            </FormControl>
-          </FormGroup>
+            <DateTimePicker
+              name="cnic"
+              label="CNIC issued Date and Time"
+              value={Form.cnicvalue}
+              onChange={handleCnicChange}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </Stack>
+          <br/>
+          <Stack direction="row" spacing={1}  width="100%">
+          <Box sx={{ minWidth: 610}}>
+            <FormGroup>
+              <FormControl>
+                <InputLabel htmlFor="date-time">Phone number</InputLabel>
+                <Input
+                  name="phone"
+                  value={Form.phone}
+                  id="phone"
+                  aria-describedby="my-helper-text"
+                />
+                <FormHelperText id="phone">Add phone number</FormHelperText>
+              </FormControl>
+            </FormGroup>
+            </Box>
+            <br />
+            <Box sx={{ minWidth: 610}}>
+            <FormGroup>
+              <FormControl>
+                <InputLabel htmlFor="my-input">Email address</InputLabel>
+                <Input
+                  type="email"
+                  name="email"
+                  value={Form.email}
+                  id="my-input"
+                  aria-describedby="my-helper-text"
+                />
+                <FormHelperText id="my-helper-text">
+                  We'll never share your email.
+                </FormHelperText>
+              </FormControl>
+            </FormGroup>
+            </Box>
+          </Stack>
           <br />
-          <br />
-          <FormGroup>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">
-                Please Select your province
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                name="province"
-                value={Form.province}
-                label="province"
-                onChange={handleChange}
-              >
-                <MenuItem value={10}>Punjab</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
-          </FormGroup>
-
-          <FormGroup>
-            <FormControl>
-              <InputLabel htmlFor="my-input">Email address</InputLabel>
-              <Input
-                type="email"
-                name="email"
-                value={Form.email}
-                id="my-input"
-                aria-describedby="my-helper-text"
-              />
-              <FormHelperText id="my-helper-text">
-                We'll never share your email.
-              </FormHelperText>
-            </FormControl>
-          </FormGroup>
-
+          <br/>
+          <Stack direction="row" spacing={1} width="100%">
+          <Box sx={{ minWidth: 610}}>
+            <FormGroup>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  Please Select your province
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  name="province"
+                  value={Form.province}
+                  label="province"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={10}>Punjab</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+              </FormControl>
+            </FormGroup>
+            </Box>
+            <Box sx={{ minWidth: 550}}>
+            <FormGroup>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">
+                  Please Select Game
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  name="province"
+                  value={Form.game}
+                  label="game"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={10}>GTA V</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+                
+              </FormControl>
+              
+            </FormGroup>
+            </Box>
+            <Box sx={{minWidth:30}}>
+            <Button>Select</Button>
+            </Box>
+           </Stack>
+         <br/>
           <FormGroup>
             <DesktopDatePicker
               label="Date of birth"
@@ -232,7 +272,9 @@ export default function CustomForm() {
           </FormGroup>
           <FormGroup>
             <FormControl>
-              <InputLabel htmlFor="confirmpassword">Confirm password</InputLabel>
+              <InputLabel htmlFor="confirmpassword">
+                Confirm password
+              </InputLabel>
               <Input
                 name="confirmpassword"
                 value={Form.confirmpassword}
@@ -242,6 +284,29 @@ export default function CustomForm() {
               <FormHelperText id="password">Confirm password</FormHelperText>
             </FormControl>
           </FormGroup>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Gender</FormLabel>
+            <RadioGroup
+              aria-label="gender"
+              defaultValue="female"
+              name="radio-buttons-group"
+            >
+              <FormControlLabel
+                value="female"
+                control={<Radio />}
+                label="Female"
+              />
+              <FormControlLabel value="male" control={<Radio />} label="Male" />
+              <FormControlLabel
+                value="other"
+                control={<Radio />}
+                label="Other"
+              />
+            </RadioGroup>
+          </FormControl>
+          <Button variant="contained" color="success">
+            Submit
+          </Button>
         </Stack>
       </LocalizationProvider>
     </div>
