@@ -21,7 +21,7 @@ export default function Leaves() {
   //setshortLeave( ()=>localStorage.setItem("shortLeave", time))
   return <div>
       <p>short leave was on: {localStorage.getItem("shortLeave")}</p>
-      <p>short leave was on: {shortLeave}</p>
+      <p>short leave was on: {shortLeave}</p> 
 
   </div>;
 }

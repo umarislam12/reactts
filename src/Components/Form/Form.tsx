@@ -26,28 +26,44 @@ import Button from "@mui/material/Button";
 // }))
 
 export default function CustomForm() {
+  const games=["GTAV","Mario","FarCry","Sims"];
+  const province=["Punjab","Sindh","KPK","Balochistan","Gilgit baltistan"]
   const [inputs, setInputs] = useState({
     firstName: "",
     lastName: "",
-    cnic: "",
+    cnicDate: "",
+    image:"",
     cnicvalue: "",
     phone: "",
-    provinceId: "punjab",
+    province: "punjab",
     game: "",
     email: "",
     dobvalue: "",
   });
-  console.log(inputs);
+  // console.log(inputs);
   const handleInputChange = (event) => {
-    event.persist();
+   // console.log(typeof event.target.value);
+   
+    console.log(event.target);
+    // switch(event.type){
+    //   case ''
+    
+   // event.persist();
     setInputs((inputs) => ({
       ...inputs,
       [event.target.name]: event.target.value,
     }));
-  };
+  // }
 
+  };
+const handleSubmit=(e)=>{
+  e.preventDefault();
+  console.log(inputs)
+}
   return (
+    
     <div>
+      <form onSubmit={handleSubmit}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Stack
         
@@ -111,7 +127,7 @@ export default function CustomForm() {
               <DateTimePicker
                 name="cnic"
                 label="CNIC issued Date and Time"
-                value={inputs.cnicvalue}
+                value={inputs.cnicDate}
                 onChange={handleInputChange}
                 renderInput={(params) => <TextField {...params} />}
               />
@@ -125,12 +141,15 @@ export default function CustomForm() {
                     margin: 5,
                     border: '1px solid green',
                     bgcolor: "none",
+                    textAlign: "center",
                     "&:hover": {
                       backgroundColor: "primary.main",
                       opacity: [0.9, 0.8, 0.7],
+
                     },
                   }}
-                ><Button >Upload</Button></Box>
+                ><input type="file" 
+                 accept="image/*" name="image" onChange={handleInputChange}/></Box>
                 {/* <input type='file' onChange={onSelectFile} />
                 {selectedFile &&  <img src={preview} /> } */}
               </div>
@@ -146,6 +165,7 @@ export default function CustomForm() {
                     name="phone"
                     value={inputs.phone}
                     id="phone"
+                    onChange={handleInputChange}
                     aria-describedby="my-helper-text"
                   />
                   <FormHelperText id="phone">Add phone number</FormHelperText>
@@ -162,6 +182,7 @@ export default function CustomForm() {
                     name="email"
                     value={inputs.inputs}
                     id="my-input"
+                    onChange={handleInputChange}
                     aria-describedby="my-helper-text"
                   />
                   <FormHelperText id="my-helper-text">
@@ -177,7 +198,7 @@ export default function CustomForm() {
             <Box sx={{ minWidth: 610 }}>
               <FormGroup>
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">
+                  <InputLabel  id="demo-simple-select-label">
                     Please Select your province
                   </InputLabel>
                   <Select
@@ -188,9 +209,7 @@ export default function CustomForm() {
                     label="province"
                     onChange={handleInputChange}
                   >
-                    <MenuItem value={"Punjab"}>Punjab</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                     {province.map(prov=><MenuItem value={prov} key={prov}>{prov}</MenuItem>)}
                   </Select>
                 </FormControl>
               </FormGroup>
@@ -204,14 +223,13 @@ export default function CustomForm() {
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    name="province"
+                    name="game"
                     value={inputs.game}
                     label="game"
                     onChange={handleInputChange}
                   >
-                    <MenuItem value={10}>GTA V</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    {games.map(game=><MenuItem value={game} key={game}>{game}</MenuItem>)}
+                   
                   </Select>
                 </FormControl>
               </FormGroup>
@@ -265,6 +283,7 @@ export default function CustomForm() {
                 <FormControl>
                   <InputLabel htmlFor="date-time">Password</InputLabel>
                   <Input
+                  type="password"
                     name="password"
                     value={inputs.password}
                     id="phone"
@@ -281,6 +300,7 @@ export default function CustomForm() {
                     Confirm password
                   </InputLabel>
                   <Input
+                  type="password"
                     name="confirmpassword"
                     onChange={handleInputChange}
                     value={inputs.confirmpassword}
@@ -315,11 +335,12 @@ export default function CustomForm() {
               />
             </RadioGroup>
           </FormControl>
-          <Button variant="contained" color="success">
+          <Button type="Submit" variant="contained" color="success">
             Submit
           </Button>
         </Stack>
       </LocalizationProvider>
+      </form>
     </div>
   );
 }
