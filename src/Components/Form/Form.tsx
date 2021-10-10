@@ -48,7 +48,10 @@ export default function CustomForm() {
     // switch(event.type){
     //   case ''
     
-   // event.persist();
+   
+    // event.persist();
+  
+    //  event.target is from control itself
     setInputs((inputs) => ({
       ...inputs,
       [event.target.name]: event.target.value,
@@ -112,20 +115,20 @@ const handleSubmit=(e)=>{
                   <InputLabel htmlFor="my-cnic">CNIC</InputLabel>
                   <Input
                     onChange={handleInputChange}
-                    value={inputs.cnic}
-                    name="cnic"
+                    value={inputs.cnicvalue}
+                    name="cnicvalue"
                     placeholder="XXXXX-XXXXXXX-X"
                     id="my-cnic"
                     aria-describedby="my-helper-text"
                   />
-                  <FormHelperText id="my-cnict">
+                  <FormHelperText id="my-cnic">
                     Please enter CNIC
                   </FormHelperText>
                 </FormControl>
               </FormGroup>
 
               <DateTimePicker
-                name="cnic"
+                name="cnicdate"
                 label="CNIC issued Date and Time"
                 value={inputs.cnicDate}
                 onChange={handleInputChange}
@@ -198,7 +201,7 @@ const handleSubmit=(e)=>{
             <Box sx={{ minWidth: 610 }}>
               <FormGroup>
                 <FormControl fullWidth>
-                  <InputLabel  id="demo-simple-select-label">
+                  <InputLabel  id="demo-simple- -label">
                     Please Select your province
                   </InputLabel>
                   <Select
