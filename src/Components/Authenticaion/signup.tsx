@@ -1,6 +1,8 @@
 // @ts-nocheck
 import React from "react";
-import {  Container, CssBaseline, Avatar, Typography, Grid, TextField, FormControlLabel, Checkbox, Box, Button, makeStyles } from '@material-ui/core';
+import {   CssBaseline, Avatar, Typography, Grid, TextField, FormControlLabel, Checkbox, Box, Button} from '@material-ui/core';
+// import { makeStyles } from '@mui/styles';
+import Container from '@mui/material/Container';
 import { Link } from "react-router-dom";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import useSignupForm from "./customHooks";
@@ -24,30 +26,34 @@ function Copyright() {
     );
   }
   
-  const useStyles = makeStyles((theme) => ({
-    paper: {
-      marginTop: theme.spacing(8),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(3),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }));
+  
+  
+  
+  
+  //const useStyles = makeStyles((theme) => ({
+  //   paper: {
+  //     marginTop: theme.spacing(8),
+  //     display: 'flex',
+  //     flexDirection: 'column',
+  //     alignItems: 'center',
+  //   },
+  //   avatar: {
+  //     margin: theme.spacing(1),
+  //     backgroundColor: theme.palette.secondary.main,
+  //   },
+  //   form: {
+  //     width: '100%', // Fix IE 11 issue.
+  //     marginTop: theme.spacing(3),
+  //   },
+  //   submit: {
+  //     margin: theme.spacing(3, 0, 2),
+  //   },
+  // }));
   
   
   
 const Signup = ({submitForm}) => {
-    const classes = useStyles();
+   // const classes = useStyles();
     console.log(submitForm);
     const signup = () => {
       alert(`User Created!
@@ -62,8 +68,8 @@ const Signup = ({submitForm}) => {
     // console.log(useSignupForm(validate,signup,submitForm))
     return ( <Container component="main" maxWidth="xs">
     <CssBaseline />
-    <div className={classes.paper}>
-      <Avatar className={classes.avatar}>
+    <div >
+      <Avatar >
         <LockOutlinedIcon />
       </Avatar>
       <Typography component="h1" variant="h5">
@@ -71,7 +77,7 @@ const Signup = ({submitForm}) => {
       </Typography>
 
 
-      <form  onSubmit={handleSubmit} className={classes.form} noValidate>
+      <form  onSubmit={handleSubmit}  noValidate>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <TextField onChange={handleInputChange} value={inputs.firstName } 
@@ -141,7 +147,7 @@ const Signup = ({submitForm}) => {
           fullWidth
           variant="contained"
           color="primary"
-          className={classes.submit}
+          
         >
           Sign Up
         </Button>

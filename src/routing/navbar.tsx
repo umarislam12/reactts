@@ -13,21 +13,21 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   menuButton: {
+//     marginRight: theme.spacing(2),
+//   },
+//   title: {
+//     flexGrow: 1,
+//   },
+// }));
 export default function Navabar() {
 
 
-   const classes = useStyles();
+  // const classes = useStyles();
    
 return(
   <>
@@ -35,13 +35,13 @@ return(
   <Toolbar>
     <IconButton
       edge="start"
-      className={classes.menuButton}
+     
       color="inherit"
       aria-label="menu"
     >
       {/* <MenuIcon /> */}
     </IconButton>
-    <Typography variant="h6" className={classes.title}>
+    <Typography variant="h6" >
       My first Application
     </Typography>
     <Button>
