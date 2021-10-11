@@ -56,7 +56,7 @@ export default function CustomForm() {
     
      const result= await axios("https://api.publicapis.org/entries")
        
-     setGame(result)
+     setGame(result.data.entries)
      // .then((res) => {
         //   res.json();
         // })
@@ -69,13 +69,13 @@ export default function CustomForm() {
         //   setErrors(error);
         //   console.log(errors)
         // })
-    console.log(result.data.entries.map(car=>car))
+    console.log(result.data.entries);
   },[]);
   // console.log(inputs);
   const handleInputChange = (event) => {
     // console.log(typeof event.target.value);
 
-    console.log(event.target);
+
     // switch(event.type){
     //   case ''
 
@@ -88,6 +88,11 @@ export default function CustomForm() {
     }));
     // }
   };
+  const handleInputDateChange=(date,naam)=>{
+    setInputs({...inputs,
+    [naam]:date
+  })
+  }
   const handleSubmit = (e) => {
     setError(formValidate(inputs));
     e.preventDefault();
@@ -96,6 +101,7 @@ export default function CustomForm() {
   };
   return (
     <div>
+       
       <form onSubmit={handleSubmit}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <Stack
@@ -160,7 +166,7 @@ export default function CustomForm() {
                   name="cnicdate"
                   label="CNIC issued Date and Time"
                   value={inputs.cnicDate}
-                  onChange={handleInputChange}
+                  onChange={date=>handleInputDateChange(date,"cnicdate")}
                   renderInput={(params) => <TextField {...params} />}
                 />
               </Stack>
@@ -269,6 +275,8 @@ export default function CustomForm() {
                       label="game"
                       onChange={handleInputChange}
                     >
+
+                      
                       {games.map((game) => (
                         <MenuItem value={game} key={game}>
                           {game}
@@ -289,7 +297,7 @@ export default function CustomForm() {
                 inputFormat="MM/dd/yyyy"
                 name="dobvalue"
                 value={inputs.dobvalue}
-                onChange={handleInputChange}
+                onChange={date=>handleInputDateChange(date,"dobvalue")}
                 renderInput={(params) => <TextField {...params} />}
               />
             </FormGroup>
