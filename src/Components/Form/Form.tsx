@@ -349,6 +349,7 @@ export default function CustomForm() {
                       name="password"
                       value={inputs.password}
                       id="phone"
+                      onChange={handleInputChange}
                       aria-describedby="my-helper-text"
                     />
                     <FormHelperText id="password">
