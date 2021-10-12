@@ -50,6 +50,9 @@ export default function CustomForm() {
     dobvalue: "",
     password: "",
     confirmPassword: "",
+    gender:"female",
+    favLang:"",
+    description:""
   });
   const [errors, setErrors] = useState({});
   useEffect(async() => {
@@ -90,8 +93,10 @@ export default function CustomForm() {
   };
   const handleInputDateChange=(date,naam)=>{
     setInputs({...inputs,
+
     [naam]:date
   })
+ 
   }
   const handleSubmit = (e) => {
     setError(formValidate(inputs));
@@ -124,7 +129,7 @@ export default function CustomForm() {
                       aria-describedby="my-helper-text"
                     />
                     {error.firstName && (
-                      <p style={{ color: "red" }}>{error.firstName}</p>
+                      <span style={{ color: "red" }}>{error.firstName}</span>
                     )}
                   </FormControl>
                 </FormGroup>
@@ -166,7 +171,8 @@ export default function CustomForm() {
                   name="cnicdate"
                   label="CNIC issued Date and Time"
                   value={inputs.cnicDate}
-                  onChange={date=>handleInputDateChange(date,"cnicdate")}
+                  
+                  onChange={handleInputChange}
                   renderInput={(params) => <TextField {...params} />}
                 />
               </Stack>
@@ -295,9 +301,9 @@ export default function CustomForm() {
               <DesktopDatePicker
                 label="Date of birth"
                 inputFormat="MM/dd/yyyy"
-                name="dobvalue"
+               
                 value={inputs.dobvalue}
-                onChange={date=>handleInputDateChange(date,"dobvalue")}
+                onChange={handleInputChange}
                 renderInput={(params) => <TextField {...params} />}
               />
             </FormGroup>
@@ -310,13 +316,13 @@ export default function CustomForm() {
                 >
                   <FormLabel component="legend">Favourite Languages</FormLabel>
                   <FormControlLabel
-                    control={<Checkbox defaultChecked />}
+                    control={<Checkbox defaultChecked onChange={handleInputChange} name="Java Script" value="Java Script"/>}
                     label="Java Script"
                   />
-                  <FormControlLabel control={<Checkbox />} label="React JS" />
-                  <FormControlLabel control={<Checkbox />} label="Node JS" />
-                  <FormControlLabel control={<Checkbox />} label="Python" />
-                  <FormControlLabel control={<Checkbox />} label="C, C++" />
+                  <FormControlLabel control={<Checkbox onChange={handleInputChange} name="React JS" value="React JS"/>} label="React JS" />
+                  <FormControlLabel control={<Checkbox onChange={handleInputChange} name="Node JS" value="Node JS"/>} label="Node JS" />
+                  <FormControlLabel control={<Checkbox onChange={handleInputChange} name="Python" value="Python"/>} label="Python" />
+                  <FormControlLabel control={<Checkbox onChange={handleInputChange} name="C, C++" value="C, C++"/>} label="C, C++" />
                 </FormControl>
               </Box>
             </FormGroup>
@@ -326,6 +332,9 @@ export default function CustomForm() {
                 label="Description"
                 multiline
                 rows={4}
+                name="description"
+                value={inputs.description}
+                onChange={handleInputChange}
                 variant="filled"
               />
             </FormGroup>
@@ -375,7 +384,9 @@ export default function CustomForm() {
               <RadioGroup
                 aria-label="gender"
                 defaultValue="female"
-                name="radio-buttons-group"
+                name="gender"
+                value={inputs.gender}
+                onChange={handleInputChange}
               >
                 <FormControlLabel
                   value="female"
