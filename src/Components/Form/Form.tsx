@@ -21,7 +21,7 @@ import FormLabel from "@mui/material/FormLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import formValidate from "./formValidate";
-import axios from 'axios'
+import axios from "axios";
 // const useStyle=makeStyles(theme=>({
 //   formControl:100
 // }))
@@ -29,7 +29,7 @@ import axios from 'axios'
 export default function CustomForm() {
   const games = ["GTAV", "Mario", "FarCry", "Sims"];
   const [game, setGame] = useState([]);
-  const [error, setError] = useState({})
+  const [error, setError] = useState({});
   const province = [
     "Punjab",
     "Sindh",
@@ -50,54 +50,53 @@ export default function CustomForm() {
     dobvalue: "",
     password: "",
     confirmPassword: "",
-    gender:"female",
-    favLang:"",
-    description:""
+    gender: "female",
+    favLang:  {
+      javascript: false,
+      reactjs: false,
+      nodejs:false,
+      python: false,
+      cplusplus: false,
+    },
+    description: "",
   });
+ 
+  //const { javascript, reactjs, nodejs, python, cplusplus } = inputs.favLang;
+  // {"javascript":false,"reactjs":false,"nodejs":false,"python":false,"cplusplus":false},
   const [errors, setErrors] = useState({});
-  useEffect(async() => {
-    
-     const result= await axios("https://api.publicapis.org/entries")
-       
-     setGame(result.data.entries)
-     // .then((res) => {
-        //   res.json();
-        // })
-        // .then((result) => {
-        //   setGame({
-        //     result.data
-        //   })
-        //   console.log(game)
-        // },(error)=>{
-        //   setErrors(error);
-        //   console.log(errors)
-        // })
+  useEffect(async () => {
+    const result = await axios("https://api.publicapis.org/entries");
+
+    setGame(result.data.entries);
+
     console.log(result.data.entries);
-  },[]);
+  }, []);
   // console.log(inputs);
   const handleInputChange = (event) => {
-    // console.log(typeof event.target.value);
-
-
-    // switch(event.type){
-    //   case ''
-
-    // event.persist();
-
-    //  event.target is from control itself
-    setInputs((inputs) => ({
+    console.log(event.target.name, event.target.checked);
+    const target=event.target;
+    const name=target.name;
+    const value=target.type==="checkbox"?target.checked:target.value;
+    setInputs((inputs)=>({
       ...inputs,
-      [event.target.name]: event.target.value,
-    }));
-    // }
+      [name]:value
+    }))
+  
+      
+      // setInputs((inputs) => ({
+      //   ...inputs,
+      //   [event.target.name]: event.target.value,
+      // }));
+      // }
+    
   };
-  const handleInputDateChange=(date,naam)=>{
-    setInputs({...inputs,
+  const handleInputDateChange = (date, naam) => {
+    setInputs({
+      ...inputs,
 
-    [naam]:date
-  })
- 
-  }
+      [naam]: date,
+    });
+  };
   const handleSubmit = (e) => {
     setError(formValidate(inputs));
     e.preventDefault();
@@ -106,7 +105,6 @@ export default function CustomForm() {
   };
   return (
     <div>
-       
       <form onSubmit={handleSubmit}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <Stack
@@ -166,15 +164,19 @@ export default function CustomForm() {
                     </FormHelperText>
                   </FormControl>
                 </FormGroup>
-
-                <DateTimePicker
-                  name="cnicdate"
+                <input
+                  type="datetime-local"
+                  name="cnicDate"
+                  value={inputs.cnicDate}
+                  onChange={handleInputChange}
+                />
+                {/* <DateTimePicker
+                  name="cnicDate"
                   label="CNIC issued Date and Time"
                   value={inputs.cnicDate}
-                  
                   onChange={handleInputChange}
                   renderInput={(params) => <TextField {...params} />}
-                />
+                /> */}
               </Stack>
               <Stack spacing={3} direction="column" width="50%">
                 <div>
@@ -281,8 +283,6 @@ export default function CustomForm() {
                       label="game"
                       onChange={handleInputChange}
                     >
-
-                      
                       {games.map((game) => (
                         <MenuItem value={game} key={game}>
                           {game}
@@ -298,13 +298,20 @@ export default function CustomForm() {
             </Stack>
             <br />
             <FormGroup>
-              <DesktopDatePicker
+              {/* <DesktopDatePicker
                 label="Date of birth"
                 inputFormat="MM/dd/yyyy"
-               
+                name="Date of birth"
+                type="datetime-local"
                 value={inputs.dobvalue}
                 onChange={handleInputChange}
                 renderInput={(params) => <TextField {...params} />}
+              /> */}
+              <input
+                type="datetime-local"
+                name="dobvalue"
+                value={inputs.dobvalue}
+                onChange={handleInputChange}
               />
             </FormGroup>
             <FormGroup>
@@ -316,13 +323,56 @@ export default function CustomForm() {
                 >
                   <FormLabel component="legend">Favourite Languages</FormLabel>
                   <FormControlLabel
-                    control={<Checkbox defaultChecked onChange={handleInputChange} name="Java Script" value="Java Script"/>}
+                    control={
+                      <Checkbox
+                      
+                        checked={inputs.favLang.javascript}
+                        onChange={handleInputChange}
+                        name="javascript"
+                      />
+                    }
                     label="Java Script"
                   />
-                  <FormControlLabel control={<Checkbox onChange={handleInputChange} name="React JS" value="React JS"/>} label="React JS" />
-                  <FormControlLabel control={<Checkbox onChange={handleInputChange} name="Node JS" value="Node JS"/>} label="Node JS" />
-                  <FormControlLabel control={<Checkbox onChange={handleInputChange} name="Python" value="Python"/>} label="Python" />
-                  <FormControlLabel control={<Checkbox onChange={handleInputChange} name="C, C++" value="C, C++"/>} label="C, C++" />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        onChange={handleInputChange}
+                        name="reactjs"
+                        checked={inputs.favLang.reactjs}
+                      />
+                    }
+                    label="React JS"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        onChange={handleInputChange}
+                        name="nodejs"
+                        checked={inputs.favLang.nodejs}
+                      />
+                    }
+                    label="Node JS"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        onChange={handleInputChange}
+                        name="python"
+                        checked={inputs.favLang.python}
+                      />
+                    }
+                    label="Python"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        onChange={handleInputChange}
+                        name="cplusplus"
+                        checked={inputs.favLang.cplusplus}
+                      />
+                    }
+                    label="C, C++"
+                  />
                 </FormControl>
               </Box>
             </FormGroup>
