@@ -61,7 +61,7 @@ export default function CustomForm() {
     description: "",
   });
  
-  //const { javascript, reactjs, nodejs, python, cplusplus } = inputs.favLang;
+  const { javascript, reactjs, nodejs, python, cplusplus } = inputs.favLang;
   // {"javascript":false,"reactjs":false,"nodejs":false,"python":false,"cplusplus":false},
   const [errors, setErrors] = useState({});
   useEffect(async () => {
@@ -73,11 +73,17 @@ export default function CustomForm() {
   }, []);
   // console.log(inputs);
   const handleInputChange = (event) => {
-    console.log(event.target.name, event.target.checked);
     const target=event.target;
     const name=target.name;
     const value=target.type==="checkbox"?target.checked:target.value;
+    console.log(inputs);
+    if(target.type==="checkbox"){
+      setInputs((inputs)=>({
+        ...inputs,[inputs.favLang.name]:!value
+      }))
+    }
     setInputs((inputs)=>({
+      
       ...inputs,
       [name]:value
     }))
@@ -326,7 +332,7 @@ export default function CustomForm() {
                     control={
                       <Checkbox
                       
-                        checked={inputs.favLang.javascript}
+                        checked={javascript}
                         onChange={handleInputChange}
                         name="javascript"
                       />
@@ -338,7 +344,7 @@ export default function CustomForm() {
                       <Checkbox
                         onChange={handleInputChange}
                         name="reactjs"
-                        checked={inputs.favLang.reactjs}
+                        checked={reactjs}
                       />
                     }
                     label="React JS"
@@ -348,7 +354,7 @@ export default function CustomForm() {
                       <Checkbox
                         onChange={handleInputChange}
                         name="nodejs"
-                        checked={inputs.favLang.nodejs}
+                        checked={nodejs}
                       />
                     }
                     label="Node JS"
@@ -358,7 +364,7 @@ export default function CustomForm() {
                       <Checkbox
                         onChange={handleInputChange}
                         name="python"
-                        checked={inputs.favLang.python}
+                        checked={python}
                       />
                     }
                     label="Python"
@@ -368,7 +374,7 @@ export default function CustomForm() {
                       <Checkbox
                         onChange={handleInputChange}
                         name="cplusplus"
-                        checked={inputs.favLang.cplusplus}
+                        checked={cplusplus}
                       />
                     }
                     label="C, C++"
