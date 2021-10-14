@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import FormControl from "@mui/material/FormControl";
 import FormGroup from "@mui/material/FormGroup";
 import Input from "@mui/material/Input";
@@ -41,7 +41,7 @@ export default function CustomForm() {
     firstName: "",
     lastName: "",
     cnicDate: "",
-    image: "",
+    image: [],
     cnicvalue: "",
     phone: "",
     province: "punjab",
@@ -51,17 +51,26 @@ export default function CustomForm() {
     password: "",
     confirmPassword: "",
     gender: "female",
-    favLang:  {
-      javascript: false,
-      reactjs: false,
-      nodejs:false,
-      python: false,
-      cplusplus: false,
-    },
+    javascript: false,
+    reactjs: false,
+    nodejs: false,
+    python: false,
+    cplusplus: false,
     description: "",
   });
- 
-  const { javascript, reactjs, nodejs, python, cplusplus } = inputs.favLang;
+  const imageEl = useRef(inputs.image);
+  console.log(imageEl.current);
+  // var file = imageEl.current.image.files[0];
+  //   var reader = new FileReader();
+  //   var url = reader.readAsDataURL(file);
+
+  //    reader.onloadend = function (e) {
+  //       setInputs({
+  //         image: [reader.result]
+  //       })
+  //     }.bind(this);
+  //   console.log(url)
+  // const { javascript, reactjs, nodejs, python, cplusplus } = inputs.favLang;
   // {"javascript":false,"reactjs":false,"nodejs":false,"python":false,"cplusplus":false},
   const [errors, setErrors] = useState({});
   useEffect(async () => {
@@ -73,37 +82,42 @@ export default function CustomForm() {
   }, []);
   // console.log(inputs);
   const handleInputChange = (event) => {
-    const target=event.target;
-    const name=target.name;
-    const value=target.type==="checkbox"?target.checked:target.value;
+    const target = event.target;
+    const name = target.name;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     // const value=target.type==="checkbox"?target.checked:target.type==="file"?....:target.value;
-    console.log(inputs);
-    if(target.type==="checkbox"){
-      setInputs((inputs)=>({
-        ...inputs,[inputs.favLang.name]:!value
-      }))
-    }
-    setInputs((inputs)=>({
-      
-      ...inputs,
-      [name]:value
-    }))
-  
-      
-      // setInputs((inputs) => ({
-      //   ...inputs,
-      //   [event.target.name]: event.target.value,
-      // }));
-      // }
-    
-  };
-  const handleInputDateChange = (date, naam) => {
-    setInputs({
-      ...inputs,
 
-      [naam]: date,
-    });
+    if (target.type === "file") {
+
+      console.log("We in image");
+      // Assuming only image
+      // if(imageEl.current.image && imageEl.current.image[0]){
+      var file = imageEl.current.files[0];
+      var reader = new FileReader();
+      var url = reader.readAsDataURL(file);
+
+      reader.onloadend = function (e) {
+        setInputs({
+          ...inputs,
+          image: [reader.result],
+        });
+      };
+    
+    }
+    console.log(inputs);
+    setInputs((inputs) => ({
+      ...inputs,
+      [name]: value,
+    }));
+
+    console.log(inputs);
+    // setInputs((inputs) => ({
+    //   ...inputs,
+    //   [event.target.name]: event.target.value,
+    // }));
+    // }
   };
+
   const handleSubmit = (e) => {
     setError(formValidate(inputs));
     e.preventDefault();
@@ -202,11 +216,15 @@ export default function CustomForm() {
                     }}
                   >
                     <input
+                      ref={imageEl}
                       type="file"
+                      // style={{width:0,height:0,display:"hidden"}}
                       accept="image/*"
                       name="image"
                       onChange={handleInputChange}
+                      multiple={false}
                     />
+                    <img src={inputs.image} style={{width:300,height:300}} />
                   </Box>
                   {/* <input type='file' onChange={onSelectFile} />
                 {selectedFile &&  <img src={preview} /> } */}
@@ -332,8 +350,7 @@ export default function CustomForm() {
                   <FormControlLabel
                     control={
                       <Checkbox
-                      
-                        checked={javascript}
+                        checked={inputs.javascript}
                         onChange={handleInputChange}
                         name="javascript"
                       />
@@ -345,7 +362,7 @@ export default function CustomForm() {
                       <Checkbox
                         onChange={handleInputChange}
                         name="reactjs"
-                        checked={reactjs}
+                        checked={inputs.reactjs}
                       />
                     }
                     label="React JS"
@@ -355,7 +372,7 @@ export default function CustomForm() {
                       <Checkbox
                         onChange={handleInputChange}
                         name="nodejs"
-                        checked={nodejs}
+                        checked={inputs.nodejs}
                       />
                     }
                     label="Node JS"
@@ -365,7 +382,7 @@ export default function CustomForm() {
                       <Checkbox
                         onChange={handleInputChange}
                         name="python"
-                        checked={python}
+                        checked={inputs.python}
                       />
                     }
                     label="Python"
@@ -375,7 +392,7 @@ export default function CustomForm() {
                       <Checkbox
                         onChange={handleInputChange}
                         name="cplusplus"
-                        checked={cplusplus}
+                        checked={inputs.cplusplus}
                       />
                     }
                     label="C, C++"
