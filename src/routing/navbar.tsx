@@ -102,6 +102,9 @@ return(
       <Link style={{ color: "white" }} to="/flashcard">
        Flash cards
       </Link>
+      <Link style={{ color: "white" }} to="/currencyexchange">
+       Currency exchange
+      </Link>
     </Button>
   </Toolbar>
 </AppBar>

@@ -23,6 +23,7 @@ import Navbar from "./navbar";
 import Game from "../Components/Game/Game";
 import FlashCard from "../Components/Game/FlashCard";
 import Form from "../Components/Form/Form";
+import CurrencyExchange from "../Components/CurrencyExchange/CurrencyExchange"
 export default function Enter() {
   const [login, setLogin] = useState(false)
   return (
@@ -57,6 +58,9 @@ export default function Enter() {
           </Route>
           <Route path="/flashcard">
             <FlashCard />
+          </Route>
+          <Route path="/currencyexchange">
+            <CurrencyExchange />
           </Route>
           <Route component={NotFound} />
         </Switch>

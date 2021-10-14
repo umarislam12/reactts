@@ -147,9 +147,9 @@ export default function CustomForm() {
                       id="my-firstname"
                       aria-describedby="my-helper-text"
                     />
-                    {error.firstName && (
-                      <span style={{ color: "red" }}>{error.firstName}</span>
-                    )}
+                    {/* {error.firstName && ( */}
+                      <span style={{display:error.firstName ?'block':'none',color: "red" }}>{error.firstName}</span>
+                    {/* )} */}
                   </FormControl>
                 </FormGroup>
 
