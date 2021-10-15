@@ -45,7 +45,7 @@ useEffect(() => {
             </option>
           
         </select>
-        <input type="number" onChange={(e) =>setValue(parseFloat(e.target.value))} value={value} />
+        <input type="number" onChange={(e) =>setValue(parseFloat(e.target.value)) && setConverted(null)&&console.log(converted)} value={value} />
       </div>
       <div>
         <select
@@ -59,7 +59,7 @@ useEffect(() => {
             </option>
           ))}
         </select>
-        <input  disabled={true} value={converted} />
+        <input  disabled={true} value={converted===null?"calculating..":converted} />
       </div>
     </div>
   );
