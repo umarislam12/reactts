@@ -6,7 +6,7 @@ export default function formValidate(inputs){
   if(!inputs.lastName.trim()){
       error.lastName="last name is required"
   }
-  if(!inputs.email){
+  if(!inputs.email.trim()){
       error.email="email is required"
   }
   if(!inputs.password ){

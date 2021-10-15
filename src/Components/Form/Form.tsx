@@ -72,7 +72,7 @@ export default function CustomForm() {
   //   console.log(url)
   // const { javascript, reactjs, nodejs, python, cplusplus } = inputs.favLang;
   // {"javascript":false,"reactjs":false,"nodejs":false,"python":false,"cplusplus":false},
-  const [errors, setErrors] = useState({});
+ 
   useEffect(async () => {
     const result = await axios("https://api.publicapis.org/entries");
 
@@ -180,9 +180,9 @@ export default function CustomForm() {
                       id="my-cnic"
                       aria-describedby="my-helper-text"
                     />
-                    <FormHelperText id="my-cnic">
+                       {error.firstName && (<FormHelperText style={{ color: "red" }} id="my-cnic">
                       Please enter CNIC
-                    </FormHelperText>
+                    </FormHelperText>)}
                   </FormControl>
                 </FormGroup>
                 <input
