@@ -102,10 +102,17 @@ return(
       <Link style={{ color: "white" }} to="/flashcard">
        Flash cards
       </Link>
-      <Link style={{ color: "white" }} to="/currencyexchange">
+      
+      
+    </Button>
+    <Button 
+    // onMouseOver={handleOpenMenu}
+    aria-controls='menu'>
+      {" "}
+    <Link style={{ color: "white" }} to="/currencyexchange">
        Currency exchange
       </Link>
-    </Button>
+      </Button>
   </Toolbar>
 </AppBar>
 {/* <Menu id='menu' anchorEl={anchorEl}
