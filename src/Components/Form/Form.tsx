@@ -220,16 +220,18 @@ export default function CustomForm() {
                       "&:hover": {
                         backgroundColor: "primary.main",
                         opacity: [0.9, 0.8, 0.7],
+                        cursor: "pointer",
                       },
                     }}
                   >
                     <input
                       ref={imageEl}
                       type="file"
-                      style={{width:300,height:300,position: "absolute"}}
+                      style={{width:300,height:300,position: "absolute", opacity:0, cursor: "pointer"}}
                       accept="image/*"
                       name="image"
                       onChange={handleInputChange}
+                      placeholder="Image"
                       multiple={false}
                     />
                     <img src={inputs.image} style={{width:300,height:300}} />
