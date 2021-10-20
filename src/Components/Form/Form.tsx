@@ -25,6 +25,7 @@ import axios from "axios";
 // const useStyle=makeStyles(theme=>({
 //   formControl:100
 // }))
+import { IMaskInput } from 'react-imask';
 
 export default function CustomForm() {
   const games = ["GTAV", "Mario", "FarCry", "Sims"];
@@ -172,7 +173,7 @@ export default function CustomForm() {
                 <FormGroup>
                   <FormControl>
                     <InputLabel htmlFor="my-cnic">CNIC</InputLabel>
-                    <Input
+                    <IMaskInput
                       onChange={handleInputChange}
                       value={inputs.cnicvalue}
                       name="cnicvalue"
@@ -180,17 +181,22 @@ export default function CustomForm() {
                       id="my-cnic"
                       aria-describedby="my-helper-text"
                     />
-                       {error.firstName && (<FormHelperText style={{ color: "red" }} id="my-cnic">
+                       {error.cnicvalue && (<span style={{ color: "red" }} id="my-cnic">
                       Please enter CNIC
-                    </FormHelperText>)}
+                    </span>)}
                   </FormControl>
                 </FormGroup>
-                <input
+                <FormGroup>
+                  <FormControl>
+                    <InputLabel htmlFor="my-cnic">CNIC date and time</InputLabel>
+                <Input
                   type="datetime-local"
                   name="cnicDate"
                   value={inputs.cnicDate}
                   onChange={handleInputChange}
                 />
+                  </FormControl>
+                </FormGroup>
                 {/* <DateTimePicker
                   name="cnicDate"
                   label="CNIC issued Date and Time"
@@ -254,16 +260,16 @@ export default function CustomForm() {
                   <FormControl>
                     <InputLabel htmlFor="my-input">Email address</InputLabel>
                     <Input
-                      type="email"
+                      type="text"
                       name="email"
                       value={inputs.email}
                       id="my-input"
                       onChange={handleInputChange}
                       aria-describedby="my-helper-text"
                     />
-                    <FormHelperText id="my-helper-text">
-                      We'll never share your email.
-                    </FormHelperText>
+                     {error.email && (
+                      <span style={{ color: "red" }}>{error.email}</span>
+                    )}
                   </FormControl>
                 </FormGroup>
               </Box>
@@ -426,9 +432,9 @@ export default function CustomForm() {
                       onChange={handleInputChange}
                       aria-describedby="my-helper-text"
                     />
-                    <FormHelperText id="password">
-                      Enter password
-                    </FormHelperText>
+                     {error.password && (
+                      <p style={{ color: "red" }}>{error.password}</p>
+                    )}
                   </FormControl>
                 </FormGroup>
               </Box>
@@ -446,9 +452,9 @@ export default function CustomForm() {
                       id="confirmPassword"
                       aria-describedby="my-helper-text"
                     />
-                    <FormHelperText id="password">
-                      Confirm password
-                    </FormHelperText>
+                     {error.ConfirmPassword && (
+                      <p style={{ color: "red" }}>{error.ConfirmPassword}</p>
+                    )}
                   </FormControl>
                 </FormGroup>
               </Box>

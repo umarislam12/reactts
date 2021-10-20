@@ -9,20 +9,24 @@ export default function formValidate(inputs) {
   if (!inputs.email.trim()) {
     error.email = "email is required";
   } else if (
-    /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(inputs.email)
+    !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(inputs.email)
   ) {
     error.email = "Email is not valid";
   }
 
   if (!inputs.password) {
     error.password = "password is required";
+  }else if (inputs.password.length < 6) {
+    error.password = 'Password needs to be 6 characters or more';
   }
-  if (!inputs.ConfirmPassword) {
+  if (!inputs.confirmPassword) {
     error.ConfirmPassword = "ConfirmPassword is required";
+  }else if (inputs.password !== inputs.confirmPassword) {
+    error.ConfirmPassword = 'Passwords do not match';
   }
   if (!inputs.image) {
     error.image = "image is required";
-  }
+  }  
   if (!inputs.cnicvalue) {
     error.cnicvalue = "CNIC number is required";
   }
