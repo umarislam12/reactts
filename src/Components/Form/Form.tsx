@@ -256,7 +256,7 @@ export default function CustomForm() {
                     <Input
                       type="email"
                       name="email"
-                      value={inputs.inputs}
+                      value={inputs.email}
                       id="my-input"
                       onChange={handleInputChange}
                       aria-describedby="my-helper-text"
