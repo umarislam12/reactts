@@ -5,7 +5,7 @@ import {
   Typography,
   CardActions,
   Button,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export default class FlashcardViewer extends Component {
   constructor(props) {

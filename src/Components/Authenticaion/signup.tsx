@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React from "react";
-import {   CssBaseline, Avatar, Typography, Grid, TextField, FormControlLabel, Checkbox, Box, Button} from '@material-ui/core';
+import {    Avatar, Typography, Grid, TextField, FormControlLabel, Checkbox, Box, Button} from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
 // import { makeStyles } from '@mui/styles';
 import Container from '@mui/material/Container';
 import { Link } from "react-router-dom";
