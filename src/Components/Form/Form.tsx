@@ -173,7 +173,7 @@ export default function CustomForm() {
                 <FormGroup>
                   <FormControl>
                     <InputLabel htmlFor="my-cnic">CNIC</InputLabel>
-                    <IMaskInput
+                    <Input
                       onChange={handleInputChange}
                       value={inputs.cnicvalue}
                       name="cnicvalue"
@@ -188,13 +188,14 @@ export default function CustomForm() {
                 </FormGroup>
                 <FormGroup>
                   <FormControl>
-                    <InputLabel htmlFor="my-cnic">CNIC date and time</InputLabel>
-                <Input
-                  type="datetime-local"
-                  name="cnicDate"
-                  value={inputs.cnicDate}
-                  onChange={handleInputChange}
-                />
+                    <InputLabel htmlFor="cnicDate"  >CNIC date and time</InputLabel>
+                      <Input
+                        type="datetime-local"
+                        name="cnicDate"
+                        id="cnicDate"
+                        value={inputs.cnicDate}
+                        onChange={handleInputChange}
+                      />
                   </FormControl>
                 </FormGroup>
                 {/* <DateTimePicker
@@ -215,6 +216,7 @@ export default function CustomForm() {
                       border: "1px solid green",
                       bgcolor: "none",
                       textAlign: "center",
+                      position: "relative",
                       "&:hover": {
                         backgroundColor: "primary.main",
                         opacity: [0.9, 0.8, 0.7],
@@ -224,7 +226,7 @@ export default function CustomForm() {
                     <input
                       ref={imageEl}
                       type="file"
-                      // style={{width:0,height:0,display:"hidden"}}
+                      style={{width:300,height:300,position: "absolute"}}
                       accept="image/*"
                       name="image"
                       onChange={handleInputChange}
