@@ -133,7 +133,7 @@ export default function CustomForm() {
             margin={5}
             marginRight={5}
             direction="column"
-            sx={{ bgcolor: "white", fontSize: 12 }}
+            sx={{ bgcolor: "294F6D", fontSize: 12 }}
           >
             <Stack direction="row">
               <Stack spacing={3} direction="column" width="50%">
@@ -191,6 +191,7 @@ export default function CustomForm() {
                     <InputLabel htmlFor="cnicDate"  >CNIC date and time</InputLabel>
                       <Input
                         type="datetime-local"
+                        
                         name="cnicDate"
                         id="cnicDate"
                         value={inputs.cnicDate}

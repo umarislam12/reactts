@@ -1,27 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import ErrorBoundary from './errorBoundary';
-import './index.css';
-import { store } from './redux/store';
+//@ts-nocheck
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import ErrorBoundary from "./errorBoundary";
+import "./index.css";
+import { store } from "./redux/store";
 //import {store} from './reduxeg/store';
-import reportWebVitals from './reportWebVitals';
-
-import Enter from './routing/enter';
-
+import reportWebVitals from "./reportWebVitals";
+import { ThemeProvider } from "styled-components";
+import Enter from "./routing/enter";
+import GlobalStyles from "./Components/styles/Global";
+const theme = {
+  colors: {
+    header: "#2596be",
+    body: "#add8e6",
+    footer: "#003333",
+  },
+};
 ReactDOM.render(
-  
   <React.StrictMode>
-    <Provider store={store}>
-    <ErrorBoundary> 
-    <Enter />
-    </ErrorBoundary>
-    </Provider>
-  </React.StrictMode>
 
- 
-  ,
-  document.getElementById('root')
+    <Provider store={store}>
+      <ErrorBoundary>
+       
+          <ThemeProvider theme={theme}>
+          <GlobalStyles/>
+            <Enter />
+    
+          </ThemeProvider>
+        
+      </ErrorBoundary>
+    </Provider>
+    
+  </React.StrictMode>,
+
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

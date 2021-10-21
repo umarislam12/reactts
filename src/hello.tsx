@@ -1,4 +1,5 @@
 // src/components/StatefulHello.tsx
+// @ts-nocheck
 
 import "./hello";
 import * as React from "react";
@@ -11,6 +12,7 @@ import Example from "./Components/Home/counter";
 import {LoginControl } from "./Components/Home/Greetings";
 import Pokemons from "./Components/Home/pokemon";
 import styled from 'styled-components';
+import GlobalStyles from "./Components/styles/Global";
 export interface Props {
   name:string;
   enthusiasmLevel?: number;

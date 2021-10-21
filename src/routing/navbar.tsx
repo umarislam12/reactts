@@ -9,8 +9,9 @@ import {
   Typography,
   
 } from "@mui/material/";
-import { makeStyles } from "@mui/material/";
 
+import { makeStyles } from "@mui/material/";
+import { Nav, StyledNavbar } from "../Components/styles/Navbar.styled";
 import { Link } from "react-router-dom";
 
 // const useStyles = makeStyles((theme) => ({
@@ -31,7 +32,9 @@ export default function Navabar() {
    
 return(
   <>
-  <AppBar position="static">
+  {/* <StyledNavbar> */}
+  {/* <AppBar position="static"> */}
+  <Nav>
   <Toolbar>
     <IconButton
       edge="start"
@@ -114,12 +117,16 @@ return(
       </Link>
       </Button>
   </Toolbar>
-</AppBar>
+  </Nav>
+{/* </AppBar> */}
 {/* <Menu id='menu' anchorEl={anchorEl}
 onClose={handleMenuClose}
 open={Boolean(anchorEl)}>
 <MenuList></MenuList>
 </Menu> */}
+
+
+{/* </StyledNavbar> */}
 </>
 )
 

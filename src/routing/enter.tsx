@@ -24,12 +24,15 @@ import Game from "../Components/Game/Game";
 import FlashCard from "../Components/Game/FlashCard";
 import Form from "../Components/Form/Form";
 import CurrencyExchange from "../Components/CurrencyExchange/CurrencyExchange"
+
 export default function Enter() {
   const [login, setLogin] = useState(false)
   return (
     <Router>
       <div>
+       
         <Navbar />
+       
 {/* <button onClick={()=>setLogin(!login)}>{login?"logout":"login"}</button> */}
         <Switch>
           <Route path="/authentication">
