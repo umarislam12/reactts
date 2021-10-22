@@ -25,7 +25,7 @@ import axios from "axios";
 // const useStyle=makeStyles(theme=>({
 //   formControl:100
 // }))
-import { IMaskInput } from 'react-imask';
+import { IMaskInput } from "react-imask";
 
 export default function CustomForm() {
   const games = ["GTAV", "Mario", "FarCry", "Sims"];
@@ -73,7 +73,7 @@ export default function CustomForm() {
   //   console.log(url)
   // const { javascript, reactjs, nodejs, python, cplusplus } = inputs.favLang;
   // {"javascript":false,"reactjs":false,"nodejs":false,"python":false,"cplusplus":false},
- 
+
   useEffect(async () => {
     const result = await axios("https://api.publicapis.org/entries");
 
@@ -89,7 +89,6 @@ export default function CustomForm() {
     // const value=target.type==="checkbox"?target.checked:target.type==="file"?....:target.value;
 
     if (target.type === "file") {
-
       console.log("We in image");
       // Assuming only image
       // if(imageEl.current.image && imageEl.current.image[0]){
@@ -103,7 +102,6 @@ export default function CustomForm() {
           image: [reader.result],
         });
       };
-    
     }
     console.log(inputs);
     setInputs((inputs) => ({
@@ -149,7 +147,14 @@ export default function CustomForm() {
                       aria-describedby="my-helper-text"
                     />
                     {/* {error.firstName && ( */}
-                      <span style={{display:error.firstName ?'block':'none',color: "red" }}>{error.firstName}</span>
+                    <span
+                      style={{
+                        display: error.firstName ? "block" : "none",
+                        color: "red",
+                      }}
+                    >
+                      {error.firstName}
+                    </span>
                     {/* )} */}
                   </FormControl>
                 </FormGroup>
@@ -181,22 +186,25 @@ export default function CustomForm() {
                       id="my-cnic"
                       aria-describedby="my-helper-text"
                     />
-                       {error.cnicvalue && (<span style={{ color: "red" }} id="my-cnic">
-                      Please enter CNIC
-                    </span>)}
+                    {error.cnicvalue && (
+                      <span style={{ color: "red" }} id="my-cnic">
+                        Please enter CNIC
+                      </span>
+                    )}
                   </FormControl>
                 </FormGroup>
                 <FormGroup>
                   <FormControl>
-                    <InputLabel htmlFor="cnicDate"  >CNIC date and time</InputLabel>
-                      <Input
-                        type="datetime-local"
-                        
-                        name="cnicDate"
-                        id="cnicDate"
-                        value={inputs.cnicDate}
-                        onChange={handleInputChange}
-                      />
+                    <InputLabel htmlFor="cnicDate">
+                      CNIC date and time
+                    </InputLabel>
+                    <Input
+                      type="datetime-local"
+                      name="cnicDate"
+                      id="cnicDate"
+                      value={inputs.cnicDate}
+                      onChange={handleInputChange}
+                    />
                   </FormControl>
                 </FormGroup>
                 {/* <DateTimePicker
@@ -218,6 +226,7 @@ export default function CustomForm() {
                       bgcolor: "none",
                       textAlign: "center",
                       position: "relative",
+                    
                       "&:hover": {
                         backgroundColor: "primary.main",
                         opacity: [0.9, 0.8, 0.7],
@@ -228,14 +237,23 @@ export default function CustomForm() {
                     <input
                       ref={imageEl}
                       type="file"
-                      style={{width:300,height:300,position: "absolute", opacity:0, cursor: "pointer"}}
+                      style={{
+                        width: 300,
+                        height: 300,
+                        position: "absolute",
+                        opacity: 0,
+                        cursor: "pointer",
+                      }}
                       accept="image/*"
                       name="image"
                       onChange={handleInputChange}
                       placeholder="Image"
                       multiple={false}
                     />
-                    <img src={inputs.image} style={{width:300,height:300}} />
+                    <img
+                      src={inputs.image}
+                      style={{ width: 300, height: 300 }}
+                    />
                   </Box>
                   {/* <input type='file' onChange={onSelectFile} />
                 {selectedFile &&  <img src={preview} /> } */}
@@ -244,45 +262,66 @@ export default function CustomForm() {
             </Stack>
             <br />
             <Stack direction="row" spacing={1} width="100%">
-              <Box sx={{ minWidth: 610 }}>
-                <FormGroup>
-                  <FormControl>
-                    <InputLabel htmlFor="date-time">Phone number</InputLabel>
-                    <Input
-                      name="phone"
-                      value={inputs.phone}
-                      id="phone"
-                      onChange={handleInputChange}
-                      aria-describedby="my-helper-text"
-                    />
-                    <FormHelperText id="phone">Add phone number</FormHelperText>
-                  </FormControl>
-                </FormGroup>
-              </Box>
-              <br />
-              <Box sx={{ minWidth: 610 }}>
-                <FormGroup>
-                  <FormControl>
-                    <InputLabel htmlFor="my-input">Email address</InputLabel>
-                    <Input
-                      type="text"
-                      name="email"
-                      value={inputs.email}
-                      id="my-input"
-                      onChange={handleInputChange}
-                      aria-describedby="my-helper-text"
-                    />
-                     {error.email && (
-                      <span style={{ color: "red" }}>{error.email}</span>
-                    )}
-                  </FormControl>
-                </FormGroup>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  p: 1,
+                  m: 1,
+                  flexWrap: 'wrap',
+                }}
+              >
+                <Box sx={{ minWidth: 550,margin: '10px' }}>
+                  <FormGroup>
+                    <FormControl>
+                      <InputLabel htmlFor="date-time">Phone number</InputLabel>
+                      <Input
+                        name="phone"
+                        value={inputs.phone}
+                        id="phone"
+                        onChange={handleInputChange}
+                        aria-describedby="my-helper-text"
+                      />
+                      <FormHelperText id="phone">
+                        Add phone number
+                      </FormHelperText>
+                    </FormControl>
+                  </FormGroup>
+                </Box>
+                <br />
+                <Box sx={{ minWidth: 550, margin: '10px' }}>
+                  <FormGroup>
+                    <FormControl>
+                      <InputLabel htmlFor="my-input">Email address</InputLabel>
+                      <Input
+                        type="text"
+                        name="email"
+                        value={inputs.email}
+                        id="my-input"
+                        onChange={handleInputChange}
+                        aria-describedby="my-helper-text"
+                      />
+                      {error.email && (
+                        <span style={{ color: "red" }}>{error.email}</span>
+                      )}
+                    </FormControl>
+                  </FormGroup>
+                </Box>
               </Box>
             </Stack>
             <br />
             <br />
             <Stack direction="row" spacing={1} width="100%">
-              <Box sx={{ minWidth: 610 }}>
+            <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  p: 1,
+                  m: 1,
+                  flexWrap: 'wrap',
+                }}
+              >
+              <Box sx={{ minWidth: 550,margin: '10px' }}>
                 <FormGroup>
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple- -label">
@@ -305,7 +344,7 @@ export default function CustomForm() {
                   </FormControl>
                 </FormGroup>
               </Box>
-              <Box sx={{ minWidth: 550 }}>
+              <Box sx={{ minWidth: 510,margin: '10px' }}>
                 <FormGroup>
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">
@@ -325,12 +364,14 @@ export default function CustomForm() {
                         </MenuItem>
                       ))}
                     </Select>
+                    <Button>Select</Button>
                   </FormControl>
                 </FormGroup>
               </Box>
-              <Box sx={{ minWidth: 30 }}>
-                <Button>Select</Button>
               </Box>
+              {/* <Box sx={{ minWidth: 30 }}>
+                <Button>Select</Button>
+              </Box> */}
             </Stack>
             <br />
             <FormGroup>
@@ -437,7 +478,7 @@ export default function CustomForm() {
                       onChange={handleInputChange}
                       aria-describedby="my-helper-text"
                     />
-                     {error.password && (
+                    {error.password && (
                       <p style={{ color: "red" }}>{error.password}</p>
                     )}
                   </FormControl>
@@ -457,7 +498,7 @@ export default function CustomForm() {
                       id="confirmPassword"
                       aria-describedby="my-helper-text"
                     />
-                     {error.ConfirmPassword && (
+                    {error.ConfirmPassword && (
                       <p style={{ color: "red" }}>{error.ConfirmPassword}</p>
                     )}
                   </FormControl>
