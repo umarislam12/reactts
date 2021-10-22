@@ -20,7 +20,7 @@ import Box from "@mui/material/Box";
 import FormLabel from "@mui/material/FormLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
-import formValidate from "./formValidate";
+import FormValidate from "./formValidate";
 import axios from "axios";
 // const useStyle=makeStyles(theme=>({
 //   formControl:100
@@ -129,7 +129,7 @@ export default function CustomForm() {
     if(foralert===true){
       alert("please fill form first")
     }
-    setError(formValidate(inputs));
+    setError(FormValidate(inputs));
    
 
     console.log(inputs);
@@ -355,7 +355,7 @@ export default function CustomForm() {
                   </FormControl>
                 </FormGroup>
               </Box>
-              <Box sx={{ minWidth: 510,margin: '10px' }}>
+              <Box sx={{ minWidth: 490,margin: '10px' }}>
                 <FormGroup>
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">
