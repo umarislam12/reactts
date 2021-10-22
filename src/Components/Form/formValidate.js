@@ -1,5 +1,6 @@
 export default function formValidate(inputs) {
   let error = {};
+  
   if (!inputs.firstName.trim()) {
     error.firstName = "first name is required";
   }

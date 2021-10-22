@@ -118,8 +118,19 @@ export default function CustomForm() {
   };
 
   const handleSubmit = (e) => {
-    setError(formValidate(inputs));
     e.preventDefault();
+    let foralert=false;
+    for(let i in inputs){
+      if(inputs[i]===""){
+
+        foralert=true;
+      }
+    }
+    if(foralert===true){
+      alert("please fill form first")
+    }
+    setError(formValidate(inputs));
+   
 
     console.log(inputs);
   };
