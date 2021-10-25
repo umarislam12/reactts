@@ -12,8 +12,8 @@ import Enter from "./routing/enter";
 import GlobalStyles from "./Components/styles/Global";
 const theme = {
   colors: {
-    header: "#2596be",
-    body: "#add8e6",
+    header: "#adaee6",
+    body: "#d4dcf2",
     footer: "#003333",
   },
 };

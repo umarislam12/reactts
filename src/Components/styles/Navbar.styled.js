@@ -10,9 +10,18 @@ background-color:${({theme})=>theme.colors.header};
 align-items:center;
 justify-content: space-between;
 margin-bottom:40px;
-@media (max-width: 800px) {
-  .flex-item-right, .flex-item-left {
-    flex: 100%;
-  }
-}
+padding:10px `
+
+
+export const Logo  =styled.img`
+
+
 `
+
+
+
+// @media (max-width: 800px) {
+//   .flex-item-right, .flex-item-left {
+//     flex: 100%;
+//   }
+// }

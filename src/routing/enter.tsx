@@ -24,6 +24,7 @@ import Game from "../Components/Game/Game";
 import FlashCard from "../Components/Game/FlashCard";
 import Form from "../Components/Form/Form";
 import CurrencyExchange from "../Components/CurrencyExchange/CurrencyExchange"
+import LandingPage from "../Components/LandingPage/LandingPage";
 
 export default function Enter() {
   const [login, setLogin] = useState(false)
@@ -64,6 +65,9 @@ export default function Enter() {
           </Route>
           <Route path="/currencyexchange">
             <CurrencyExchange />
+          </Route>
+          <Route path="/landingpage">
+            <LandingPage />
           </Route>
           <Route component={NotFound} />
         </Switch>

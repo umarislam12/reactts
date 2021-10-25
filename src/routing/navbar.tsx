@@ -116,6 +116,14 @@ return(
        Currency exchange
       </Link>
       </Button>
+      <Button 
+    // onMouseOver={handleOpenMenu}
+    aria-controls='menu'>
+      {" "}
+    <Link style={{ color: "white" }} to="/landingpage">
+       Landing page
+      </Link>
+      </Button>
   </Toolbar>
   </Nav>
 {/* </AppBar> */}
