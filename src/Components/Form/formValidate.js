@@ -6,9 +6,9 @@ import React, { useState, useEffect, useRef } from "react";
 export default function FormValidate(inputs) {
    let error = {};
  // const [error, setError] = useState({})
-  if (!inputs.firstName.trim()) {
-    error.firstName = "first name is required";
-  }
+  // if (!inputs.firstName.trim()) {
+  //   error.firstName = "first name is required";
+  // }
   if (!inputs.lastName.trim()) {
     error.lastName = "last name is required";
   }

@@ -1,4 +1,4 @@
-// @ts-nocheck
+//@ts-nocheck
 import React, { useState, useEffect, useRef } from "react";
 import FormControl from "@mui/material/FormControl";
 import FormGroup from "@mui/material/FormGroup";
@@ -74,15 +74,18 @@ export default function CustomForm() {
   // const { javascript, reactjs, nodejs, python, cplusplus } = inputs.favLang;
   // {"javascript":false,"reactjs":false,"nodejs":false,"python":false,"cplusplus":false},
 
-  useEffect(async () => {
-    const result = await axios("https://api.publicapis.org/entries");
+  //Async functions
+  // useEffect(async () => {
+  //   const result = await axios("https://api.publicapis.org/entries");
 
-    setGame(result.data.entries);
+  //   setGame(result.data.entries);
 
-    console.log(result.data.entries);
-  }, []);
+  //   console.log(result.data.entries);
+  // }, []);
   // console.log(inputs);
-  const handleInputChange = (event) => {
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     const target = event.target;
     const name = target.name;
     const value = target.type === "checkbox" ? target.checked : target.value;
@@ -117,20 +120,18 @@ export default function CustomForm() {
     // }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>): void => {
     e.preventDefault();
-    let foralert=false;
-    for(let i in inputs){
-      if(inputs[i]===""){
-
-        foralert=true;
+    let foralert = false;
+    for (let i in inputs) {
+      if (inputs[i] === "") {
+        foralert = true;
       }
     }
-    if(foralert===true){
-      alert("please fill form first")
+    if (foralert === true) {
+      alert("please fill form first");
     }
     setError(FormValidate(inputs));
-   
 
     console.log(inputs);
   };
@@ -205,18 +206,26 @@ export default function CustomForm() {
                   </FormControl>
                 </FormGroup>
                 <FormGroup>
-                  <FormControl>
+                  
                     <InputLabel htmlFor="cnicDate">
                       CNIC date and time
                     </InputLabel>
-                    <Input
+                    <input
+                   id="cnicDate"
+                      style={{ backgroundColor: "grey" }}
+                      type="datetime-local"
+                      name="cnicDate"
+                      value={inputs.cnicDate}
+                      onChange={handleInputChange}
+                    />
+                    {/* <Input
                       type="datetime-local"
                       name="cnicDate"
                       id="cnicDate"
                       value={inputs.cnicDate}
                       onChange={handleInputChange}
-                    />
-                  </FormControl>
+                    /> */}
+                 
                 </FormGroup>
                 {/* <DateTimePicker
                   name="cnicDate"
@@ -237,7 +246,7 @@ export default function CustomForm() {
                       bgcolor: "none",
                       textAlign: "center",
                       position: "relative",
-                    
+
                       "&:hover": {
                         backgroundColor: "primary.main",
                         opacity: [0.9, 0.8, 0.7],
@@ -279,10 +288,10 @@ export default function CustomForm() {
                   flexDirection: "row",
                   p: 1,
                   m: 1,
-                  flexWrap: 'wrap',
+                  flexWrap: "wrap",
                 }}
               >
-                <Box sx={{ minWidth: 550,margin: '10px' }}>
+                <Box sx={{ minWidth: 550, margin: "10px" }}>
                   <FormGroup>
                     <FormControl>
                       <InputLabel htmlFor="date-time">Phone number</InputLabel>
@@ -300,7 +309,7 @@ export default function CustomForm() {
                   </FormGroup>
                 </Box>
                 <br />
-                <Box sx={{ minWidth: 550, margin: '10px' }}>
+                <Box sx={{ minWidth: 550, margin: "10px" }}>
                   <FormGroup>
                     <FormControl>
                       <InputLabel htmlFor="my-input">Email address</InputLabel>
@@ -323,68 +332,69 @@ export default function CustomForm() {
             <br />
             <br />
             <Stack direction="row" spacing={1} width="100%">
-            <Box
+              <Box
                 sx={{
                   display: "flex",
                   flexDirection: "row",
                   p: 1,
                   m: 1,
-                  flexWrap: 'wrap',
+                  flexWrap: "wrap",
                 }}
               >
-              <Box sx={{ minWidth: 550,margin: '10px' }}>
-                <FormGroup>
-                  <FormControl fullWidth>
-                    <InputLabel id="demo-simple- -label">
-                      Please Select your province
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      name="province"
-                      value={inputs.province}
-                      label="province"
-                      onChange={handleInputChange}
-                    >
-                      {province.map((prov) => (
-                        <MenuItem value={prov} key={prov}>
-                          {prov}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </FormGroup>
-              </Box>
-              <Box sx={{ minWidth: 490,margin: '10px' }}>
-                <FormGroup>
-                  <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">
-                      Please Select Game
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      name="game"
-                      value={inputs.game}
-                      label="game"
-                      onChange={handleInputChange}
-                    >
-                      {games.map((game) => (
-                        <MenuItem value={game} key={game}>
-                          {game}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                    <Button>Select</Button>
-                  </FormControl>
-                </FormGroup>
-              </Box>
+                <Box sx={{ minWidth: 550, margin: "10px" }}>
+                  <FormGroup>
+                    <FormControl fullWidth>
+                      <InputLabel id="demo-simple- -label">
+                        Please Select your province
+                      </InputLabel>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        name="province"
+                        value={inputs.province}
+                        label="province"
+                        onChange={handleInputChange}
+                      >
+                        {province.map((prov) => (
+                          <MenuItem value={prov} key={prov}>
+                            {prov}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </FormGroup>
+                </Box>
+                <Box sx={{ minWidth: 490, margin: "10px" }}>
+                  <FormGroup>
+                    <FormControl fullWidth>
+                      <InputLabel id="demo-simple-select-label">
+                        Please Select Game
+                      </InputLabel>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        name="game"
+                        value={inputs.game}
+                        label="game"
+                        onChange={handleInputChange}
+                      >
+                        {games.map((game) => (
+                          <MenuItem value={game} key={game}>
+                            {game}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                      <Button>Select</Button>
+                    </FormControl>
+                  </FormGroup>
+                </Box>
               </Box>
               {/* <Box sx={{ minWidth: 30 }}>
                 <Button>Select</Button>
               </Box> */}
             </Stack>
             <br />
+            <Box sx={{ minWidth: 550, margin: "10px" }}>
             <FormGroup>
               {/* <DesktopDatePicker
                 label="Date of birth"
@@ -395,13 +405,16 @@ export default function CustomForm() {
                 onChange={handleInputChange}
                 renderInput={(params) => <TextField {...params} />}
               /> */}
+              <InputLabel htmlFor="cnicDate">Date of birth</InputLabel>
               <input
+                style={{ backgroundColor: "grey" }}
                 type="datetime-local"
                 name="dobvalue"
                 value={inputs.dobvalue}
                 onChange={handleInputChange}
               />
             </FormGroup>
+            </Box>
             <FormGroup>
               <Box sx={{ display: "flex" }}>
                 <FormControl
@@ -480,12 +493,12 @@ export default function CustomForm() {
               <Box sx={{ minWidth: 610 }}>
                 <FormGroup>
                   <FormControl>
-                    <InputLabel htmlFor="date-time">Password</InputLabel>
+                    <InputLabel htmlFor="password">Password</InputLabel>
                     <Input
                       type="password"
                       name="password"
                       value={inputs.password}
-                      id="phone"
+                      id="password"
                       onChange={handleInputChange}
                       aria-describedby="my-helper-text"
                     />
