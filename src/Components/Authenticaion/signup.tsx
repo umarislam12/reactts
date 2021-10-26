@@ -70,7 +70,7 @@ const Signup = ({submitForm}) => {
     return ( <Container component="main" maxWidth="xs">
     <CssBaseline />
     <div >
-      <Avatar >
+      <Avatar>
         <LockOutlinedIcon />
       </Avatar>
       <Typography component="h1" variant="h5">
