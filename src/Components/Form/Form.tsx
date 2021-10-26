@@ -137,7 +137,7 @@ export default function CustomForm() {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} noValidate>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <Stack
             margin={5}
@@ -206,26 +206,22 @@ export default function CustomForm() {
                   </FormControl>
                 </FormGroup>
                 <FormGroup>
-                  
-                    <InputLabel htmlFor="cnicDate">
-                      CNIC date and time
-                    </InputLabel>
-                    <input
-                   id="cnicDate"
-                      style={{ backgroundColor: "grey" }}
-                      type="datetime-local"
-                      name="cnicDate"
-                      value={inputs.cnicDate}
-                      onChange={handleInputChange}
-                    />
-                    {/* <Input
+                  <InputLabel htmlFor="cnicDate">CNIC date and time</InputLabel>
+                  <input
+                    id="cnicDate"
+                    style={{ backgroundColor: "grey" }}
+                    type="datetime-local"
+                    name="cnicDate"
+                    value={inputs.cnicDate}
+                    onChange={handleInputChange}
+                  />
+                  {/* <Input
                       type="datetime-local"
                       name="cnicDate"
                       id="cnicDate"
                       value={inputs.cnicDate}
                       onChange={handleInputChange}
                     /> */}
-                 
                 </FormGroup>
                 {/* <DateTimePicker
                   name="cnicDate"
@@ -395,8 +391,8 @@ export default function CustomForm() {
             </Stack>
             <br />
             <Box sx={{ minWidth: 550, margin: "10px" }}>
-            <FormGroup>
-              {/* <DesktopDatePicker
+              <FormGroup>
+                {/* <DesktopDatePicker
                 label="Date of birth"
                 inputFormat="MM/dd/yyyy"
                 name="Date of birth"
@@ -405,15 +401,15 @@ export default function CustomForm() {
                 onChange={handleInputChange}
                 renderInput={(params) => <TextField {...params} />}
               /> */}
-              <InputLabel htmlFor="cnicDate">Date of birth</InputLabel>
-              <input
-                style={{ backgroundColor: "grey" }}
-                type="datetime-local"
-                name="dobvalue"
-                value={inputs.dobvalue}
-                onChange={handleInputChange}
-              />
-            </FormGroup>
+                <InputLabel htmlFor="cnicDate">Date of birth</InputLabel>
+                <input
+                  style={{ backgroundColor: "grey" }}
+                  type="datetime-local"
+                  name="dobvalue"
+                  value={inputs.dobvalue}
+                  onChange={handleInputChange}
+                />
+              </FormGroup>
             </Box>
             <FormGroup>
               <Box sx={{ display: "flex" }}>
@@ -490,43 +486,53 @@ export default function CustomForm() {
             </FormGroup>
             <br />
             <Stack direction="row" spacing={1} width="100%">
-              <Box sx={{ minWidth: 610 }}>
-                <FormGroup>
-                  <FormControl>
-                    <InputLabel htmlFor="password">Password</InputLabel>
-                    <Input
-                      type="password"
-                      name="password"
-                      value={inputs.password}
-                      id="password"
-                      onChange={handleInputChange}
-                      aria-describedby="my-helper-text"
-                    />
-                    {error.password && (
-                      <p style={{ color: "red" }}>{error.password}</p>
-                    )}
-                  </FormControl>
-                </FormGroup>
-              </Box>
-              <Box sx={{ minWidth: 610 }}>
-                <FormGroup>
-                  <FormControl>
-                    <InputLabel htmlFor="confirmPassword">
-                      Confirm password
-                    </InputLabel>
-                    <Input
-                      type="password"
-                      name="confirmPassword"
-                      onChange={handleInputChange}
-                      value={inputs.confirmPassword}
-                      id="confirmPassword"
-                      aria-describedby="my-helper-text"
-                    />
-                    {error.ConfirmPassword && (
-                      <p style={{ color: "red" }}>{error.ConfirmPassword}</p>
-                    )}
-                  </FormControl>
-                </FormGroup>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  p: 1,
+                  m: 1,
+                  flexWrap: "wrap",
+                }}
+              >
+                <Box sx={{ minWidth: 550, margin: "5px" }}>
+                  <FormGroup>
+                    <FormControl>
+                      <InputLabel htmlFor="password">Password</InputLabel>
+                      <Input
+                        type="password"
+                        name="password"
+                        value={inputs.password}
+                        id="password"
+                        onChange={handleInputChange}
+                        aria-describedby="my-helper-text"
+                      />
+                      {error.password && (
+                        <p style={{ color: "red" }}>{error.password}</p>
+                      )}
+                    </FormControl>
+                  </FormGroup>
+                </Box>
+                <Box sx={{ minWidth: 550 ,margin: "5px"}}>
+                  <FormGroup>
+                    <FormControl>
+                      <InputLabel htmlFor="confirmPassword">
+                        Confirm password
+                      </InputLabel>
+                      <Input
+                        type="password"
+                        name="confirmPassword"
+                        onChange={handleInputChange}
+                        value={inputs.confirmPassword}
+                        id="confirmPassword"
+                        aria-describedby="my-helper-text"
+                      />
+                      {error.ConfirmPassword && (
+                        <p style={{ color: "red" }}>{error.ConfirmPassword}</p>
+                      )}
+                    </FormControl>
+                  </FormGroup>
+                </Box>
               </Box>
             </Stack>
             <br />

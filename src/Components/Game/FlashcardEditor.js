@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import {BsFillPenFill} from 'react-icons/bs';
 export default class FlashcardEditor extends Component {
   constructor(props){
     super(props);
@@ -24,6 +24,7 @@ export default class FlashcardEditor extends Component {
     ));
     return (
       <div>
+        <BsFillPenFill/>
         <h1>I am editor</h1>
 
         <table>

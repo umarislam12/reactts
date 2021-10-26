@@ -16,6 +16,7 @@ const theme = {
     body: "#d4dcf2",
     footer: "#003333",
   },
+  mobile:'1137px'
 };
 ReactDOM.render(
   <React.StrictMode>
