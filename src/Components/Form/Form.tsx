@@ -287,7 +287,7 @@ export default function CustomForm() {
                   flexWrap: "wrap",
                 }}
               >
-                <Box sx={{ minWidth: 550, margin: "10px" }}>
+                <Box sx={{ minWidth: 550, margin: "5px" }}>
                   <FormGroup>
                     <FormControl>
                       <InputLabel htmlFor="date-time">Phone number</InputLabel>
@@ -305,7 +305,7 @@ export default function CustomForm() {
                   </FormGroup>
                 </Box>
                 <br />
-                <Box sx={{ minWidth: 550, margin: "10px" }}>
+                <Box sx={{ minWidth: 550, margin: "5px" }}>
                   <FormGroup>
                     <FormControl>
                       <InputLabel htmlFor="my-input">Email address</InputLabel>

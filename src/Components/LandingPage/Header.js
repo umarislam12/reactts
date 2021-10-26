@@ -11,8 +11,13 @@ function Header() {
     <Nav>
       <Container>
         <Nav>
-          <MdCloseFullscreen />
+
+          {/* // <MdCloseFullscreen /> */}
           {/* <Logo src="./images/logo.svg" alt="" /> */}
+
+          <Logo src="./images/logo.svg"  height="87"
+    width="100" alt="" />
+
           <Button>Try it Free</Button>
         </Nav>
         {/* Align something side by side */}
@@ -34,7 +39,7 @@ function Header() {
             </Button>
           </div>
           {/* second flex item */}
-          <Image src="./images/illustration-mockups.svg" alt="" />
+          <Image src="./images/illustration-mockups.svg" alt="" height="400px" width="400px"/>
         </Flex>
       </Container>
     </Nav>
