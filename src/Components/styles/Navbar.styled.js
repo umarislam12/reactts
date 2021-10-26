@@ -19,14 +19,16 @@ padding:10px;
 
 export const Logo  =styled.img`
 @media(max-width:${({theme})=>theme.mobile}){
-  flex-direction:column;
-  margin-bottm:40px;
+margin-bottm:40px;
 }
 
 `
 export const Image=styled.img`
 margin-left:40px;
-width:375
+width:375;
+@media(max-width:${({theme})=>theme.mobile}){
+  margin:40px 0 30px;
+  }
 `
 
 
