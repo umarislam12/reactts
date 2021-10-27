@@ -3,18 +3,21 @@ import { Image, Logo, Nav } from "../styles/Navbar.styled";
 import { Container } from "../styles/Container.styled";
 import { Button } from "../styles/Button.styled";
 import { Flex } from "../styles/Flex.styled";
-
+import {Illustrationmockups} from './images/Illustration-mockups'
 import { MdCloseFullscreen } from "react-icons/md";
+import Logan from './images/Logan'
 
 function Header() {
   return (
     <Nav>
       <Container>
         <Nav>
+        
           {/* // <MdCloseFullscreen /> */}
           {/* <Logo src="./images/logo.svg" alt="" /> */}
+<Logan className="logo-spin"/>
 
-          <Logo src="./images/logo.svg" height="87" width="100" alt="" />
+          {/* <Logo src={`./images/logo.svg`} height="87" width="100" alt="" /> */}
 
           <Button>Try it Free</Button>
         </Nav>
@@ -38,7 +41,7 @@ function Header() {
           </div>
           {/* second flex item */}
           <Image
-            src="./images/illustration-mockups.svg"
+            src={"https://st2.depositphotos.com/4112313/6977/v/380/depositphotos_69779561-stock-illustration-vector-geometrical-polygon-abstract-purple.jpg"}
             alt=""
             height="400px"
             width="400px"

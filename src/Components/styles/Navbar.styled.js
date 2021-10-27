@@ -19,7 +19,7 @@ padding:10px;
 
 export const Logo  =styled.img`
 @media(max-width:${({theme})=>theme.mobile}){
-margin-bottm:40px;
+margin-bottom:15px;
 }
 
 `

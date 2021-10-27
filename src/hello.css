@@ -31,7 +31,12 @@ th, td { border-radius: 0.25em; border-style: solid; }
 th { background: #EEE; border-color: #BBB; }
 td { border-color: #DDD; }
 
-
+.logo-spin{
+	height: 20vmin;
+	width: 20vmin;
+	transform: rotate(20deg);
+	margin-bottom:5vmin;
+}
 /* header */
 header { margin: 0 0 3em; }
 header:after { clear: both; content: ""; display: table; }
