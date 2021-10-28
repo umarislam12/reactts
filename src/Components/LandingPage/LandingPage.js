@@ -3,7 +3,7 @@ import Header from "./Header";
 import content from "./content";
 import Card from "./Card";
 import { Container } from "../styles/Container.styled";
-
+import Footer from "./Footer"
 export default function LandingPage() {
   return (
     <div>
@@ -14,6 +14,7 @@ export default function LandingPage() {
         ))}
 
       </Container>
+      <Footer/>
     </div>
   );
 }
