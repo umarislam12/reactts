@@ -181,7 +181,7 @@ const authContext = createContext();
 function ProvideAuth({ children }) {
   const auth = useProvideAuth();
   return <authContext.Provider value={auth}>{children}</authContext.Provider>;
-}
+    }
 function useProvideAuth() {
   const [user, setUser] = useState(null);
 
@@ -192,14 +192,26 @@ function useProvideAuth() {
     });
   };
 
-
-const signout = (cb) => {
-  return fakeAuth.signout(() => {
-    setUser(null);
-    cb();
-  });
-};
-return{
-  user,signin,signout
-};
+  const signout = (cb) => {
+    return fakeAuth.signout(() => {
+      setUser(null);
+      cb();
+    });
+  };
+  return {
+    user,
+    signin,
+    signout,
+  };
 }
+const fakeAuth = {
+  isAuthenticated: false,
+  signin(cb) {
+    fakeAuth.isAuthenticated = true;
+    setTimeout(cb, 100); // fake async
+  },
+  signout(cb) {
+    fakeAuth.isAuthenticated = false;
+    setTimeout(cb, 100);
+  }
+};
