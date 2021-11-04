@@ -10,7 +10,7 @@ import AppleIcon from "@mui/icons-material/Apple";
 import { makeStyles } from "@mui/material/";
 import { Nav, StyledNavbar } from "../Components/styles/Navbar.styled";
 import { Link } from "react-router-dom";
-
+import { AuthButton } from "./PrivateRoute";
 // const useStyles = makeStyles((theme) => ({
 //   root: {
 //     flexGrow: 1,
@@ -109,15 +109,17 @@ export default function Navabar() {
             Landing page
           </Link>
         </Button>
+       
         <Button
           // onMouseOver={handleOpenMenu}
           aria-controls="menu"
         >
           {" "}
-          <Link style={{ color: "white" }} to="/authentication">
+          <Link style={{ color: "white" }} to="/login">
             Authentication
           </Link>
         </Button>
+       
         <Button>
           {" "}
           <Link style={{ color: "white" }} to="/leaves">
@@ -126,6 +128,7 @@ export default function Navabar() {
         </Button>
         {/* </Toolbar> */}
       </Nav>
+      <AuthButton/>
       {/* </AppBar> */}
       {/* <Menu id='menu' anchorEl={anchorEl}
 onClose={handleMenuClose}

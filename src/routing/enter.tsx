@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useState, useContext, createContext } from "react";
+import { useState,  } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,9 +28,12 @@ import Form from "../Components/Form/Form";
 import CurrencyExchange from "../Components/CurrencyExchange/CurrencyExchange";
 import LandingPage from "../Components/LandingPage/LandingPage";
 import Signup from "../Components/Authenticaion/signup";
+import PrivateRoute, { LoginPage } from "./PrivateRoute";
+import {ProvideAuth} from "./PrivateRoute"
 export default function Enter() {
   const [login, setLogin] = useState(false);
   return (
+    <ProvideAuth>
     <Router>
       <div>
         <Navbar />
@@ -43,6 +46,10 @@ export default function Enter() {
           <PrivateRoute path="/leaves">
             <Leaves />
           </PrivateRoute>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+
 
           <Route path="/form">
             <Form name="umar" />
@@ -72,13 +79,14 @@ export default function Enter() {
           <Route path="/currencyexchange">
             <CurrencyExchange />
           </Route>
-          <Route path="/landingpage">
+          <PrivateRoute path="/landingpage">
             <LandingPage />
-          </Route>
+          </PrivateRoute>
           <Route component={NotFound} />
         </Switch>
       </div>
     </Router>
+    </ProvideAuth>
   );
 }
 function Products() {
@@ -153,65 +161,10 @@ function ProductName() {
     </div>
   );
 }
-function PrivateRoute({ children, ...rest }) {
-  let auth = useAuth();
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        auth.user ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
-  );
-}
-function useAuth() {
-  return useContext(authContext);
-}
-const authContext = createContext();
 
-function ProvideAuth({ children }) {
-  const auth = useProvideAuth();
-  return <authContext.Provider value={auth}>{children}</authContext.Provider>;
-    }
-function useProvideAuth() {
-  const [user, setUser] = useState(null);
 
-  const signin = (cb) => {
-    return fakeAuth.signin(() => {
-      setUser("user");
-      cb();
-    });
-  };
 
-  const signout = (cb) => {
-    return fakeAuth.signout(() => {
-      setUser(null);
-      cb();
-    });
-  };
-  return {
-    user,
-    signin,
-    signout,
-  };
-}
-const fakeAuth = {
-  isAuthenticated: false,
-  signin(cb) {
-    fakeAuth.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
-  },
-  signout(cb) {
-    fakeAuth.isAuthenticated = false;
-    setTimeout(cb, 100);
-  }
-};
+
+
+
+
