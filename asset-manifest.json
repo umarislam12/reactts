@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/reactts/static/css/main.475e955d.chunk.css",
-    "main.js": "/reactts/static/js/main.a8464618.chunk.js",
-    "main.js.map": "/reactts/static/js/main.a8464618.chunk.js.map",
-    "runtime-main.js": "/reactts/static/js/runtime-main.9a84b2b1.js",
-    "runtime-main.js.map": "/reactts/static/js/runtime-main.9a84b2b1.js.map",
-    "static/js/2.554caf4a.chunk.js": "/reactts/static/js/2.554caf4a.chunk.js",
-    "static/js/2.554caf4a.chunk.js.map": "/reactts/static/js/2.554caf4a.chunk.js.map",
-    "static/js/3.aaf8a191.chunk.js": "/reactts/static/js/3.aaf8a191.chunk.js",
-    "static/js/3.aaf8a191.chunk.js.map": "/reactts/static/js/3.aaf8a191.chunk.js.map",
+    "main.css": "/reactts/static/css/main.c4d579c5.chunk.css",
+    "main.js": "/reactts/static/js/main.bbc968e1.chunk.js",
+    "main.js.map": "/reactts/static/js/main.bbc968e1.chunk.js.map",
+    "runtime-main.js": "/reactts/static/js/runtime-main.5c834096.js",
+    "runtime-main.js.map": "/reactts/static/js/runtime-main.5c834096.js.map",
+    "static/js/2.45fef3ff.chunk.js": "/reactts/static/js/2.45fef3ff.chunk.js",
+    "static/js/2.45fef3ff.chunk.js.map": "/reactts/static/js/2.45fef3ff.chunk.js.map",
+    "static/js/3.0d018dc8.chunk.js": "/reactts/static/js/3.0d018dc8.chunk.js",
+    "static/js/3.0d018dc8.chunk.js.map": "/reactts/static/js/3.0d018dc8.chunk.js.map",
     "index.html": "/reactts/index.html",
-    "static/css/main.475e955d.chunk.css.map": "/reactts/static/css/main.475e955d.chunk.css.map",
-    "static/js/2.554caf4a.chunk.js.LICENSE.txt": "/reactts/static/js/2.554caf4a.chunk.js.LICENSE.txt",
-    "static/media/Illustration-mockups.af68740a.svg": "/reactts/static/media/Illustration-mockups.af68740a.svg",
-    "static/media/biker.8dfab21b.svg": "/reactts/static/media/biker.8dfab21b.svg",
-    "static/media/paperish.53aa4e81.svg": "/reactts/static/media/paperish.53aa4e81.svg"
+    "static/css/main.c4d579c5.chunk.css.map": "/reactts/static/css/main.c4d579c5.chunk.css.map",
+    "static/js/2.45fef3ff.chunk.js.LICENSE.txt": "/reactts/static/js/2.45fef3ff.chunk.js.LICENSE.txt",
+    "static/media/Illustration-mockups.99ca2b69.svg": "/reactts/static/media/Illustration-mockups.99ca2b69.svg",
+    "static/media/biker.71027acf.svg": "/reactts/static/media/biker.71027acf.svg",
+    "static/media/paperish.c3bb261f.svg": "/reactts/static/media/paperish.c3bb261f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.9a84b2b1.js",
-    "static/js/2.554caf4a.chunk.js",
-    "static/css/main.475e955d.chunk.css",
-    "static/js/main.a8464618.chunk.js"
+    "static/js/runtime-main.5c834096.js",
+    "static/js/2.45fef3ff.chunk.js",
+    "static/css/main.c4d579c5.chunk.css",
+    "static/js/main.bbc968e1.chunk.js"
   ]
 }
