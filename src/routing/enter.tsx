@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useState } from "react";
+import { useState,  } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +8,9 @@ import {
   useRouteMatch,
   useParams,
   useLocation,
+  Redirect,
 } from "react-router-dom";
+import { products } from "./products";
 import { FilterableProductTable } from "../Components/ProductsTable/filterableProductTable";
 import Authenticationforms from "../Components/Authenticaion/authenticationForms";
 import "./enter.css";
@@ -23,27 +25,40 @@ import Navbar from "./navbar";
 import Game from "../Components/Game/Game";
 import FlashCard from "../Components/Game/FlashCard";
 import Form from "../Components/Form/Form";
-import CurrencyExchange from "../Components/CurrencyExchange/CurrencyExchange"
+import CurrencyExchange from "../Components/CurrencyExchange/CurrencyExchange";
 import LandingPage from "../Components/LandingPage/LandingPage";
-
+import Signup from "../Components/Authenticaion/signup";
+import PrivateRoute, { LoginPage } from "./PrivateRoute";
+import {ProvideAuth} from "./PrivateRoute"
 export default function Enter() {
-  const [login, setLogin] = useState(false)
+  const [login, setLogin] = useState(false);
   return (
+    <ProvideAuth>
     <Router>
       <div>
-       
         <Navbar />
-       
-{/* <button onClick={()=>setLogin(!login)}>{login?"logout":"login"}</button> */}
+
+        {/* <button onClick={()=>setLogin(!login)}>{login?"logout":"login"}</button> */}
         <Switch>
           <Route path="/authentication">
             <Authenticationforms />
           </Route>
+          <PrivateRoute path="/leaves">
+            <Leaves />
+          </PrivateRoute>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+
+
           <Route path="/form">
             <Form name="umar" />
           </Route>
           <Route path="/hello">
             <Hello name="umar" />
+          </Route>
+          <Route path="/signup">
+            <Signup />
           </Route>
           <Route path="/products">
             <Products />
@@ -54,9 +69,7 @@ export default function Enter() {
           <Route path="/todos">
             <Todos />
           </Route>
-          <Route path="/leaves">
-            <Leaves />
-          </Route>
+
           <Route path="/game">
             <Game />
           </Route>
@@ -66,13 +79,14 @@ export default function Enter() {
           <Route path="/currencyexchange">
             <CurrencyExchange />
           </Route>
-          <Route path="/landingpage">
+          <PrivateRoute path="/landingpage">
             <LandingPage />
-          </Route>
+          </PrivateRoute>
           <Route component={NotFound} />
         </Switch>
       </div>
     </Router>
+    </ProvideAuth>
   );
 }
 function Products() {
@@ -147,42 +161,10 @@ function ProductName() {
     </div>
   );
 }
-interface PRODUCT {
-  category: string;
-  price: string;
-  stocked: boolean;
-  name: string;
-}
-export const products: PRODUCT[] = [
-  {
-    category: "Sporting Goods",
-    price: "$49.99",
-    stocked: true,
-    name: "Football",
-  },
-  {
-    category: "Sporting Goods",
-    price: "$9.99",
-    stocked: true,
-    name: "Baseball",
-  },
-  {
-    category: "Sporting Goods",
-    price: "$29.99",
-    stocked: false,
-    name: "Basketball",
-  },
-  {
-    category: "Electronics",
-    price: "$99.99",
-    stocked: true,
-    name: "iPod Touch",
-  },
-  {
-    category: "Electronics",
-    price: "$399.99",
-    stocked: false,
-    name: "iPhone 5",
-  },
-  { category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7" },
-];
+
+
+
+
+
+
+

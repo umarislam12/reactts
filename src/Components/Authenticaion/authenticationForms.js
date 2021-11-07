@@ -7,8 +7,8 @@ function submitForm(){
   setIsSubmitted(true);
 }
   return ( <div>
-   { (isSubmitted===false)?
-<Signup submitForm={submitForm} />:<Signin/>}
+  
+<Signin/>
   </div> );
 }
  

@@ -45,7 +45,7 @@ export default function CustomForm() {
     image: [],
     cnicvalue: "",
     phone: "",
-    province: "punjab",
+    province: " ",
     game: "",
     email: "",
     dobvalue: "",
@@ -112,7 +112,6 @@ export default function CustomForm() {
       [name]: value,
     }));
 
-    console.log(inputs);
     // setInputs((inputs) => ({
     //   ...inputs,
     //   [event.target.name]: event.target.value,
@@ -122,15 +121,15 @@ export default function CustomForm() {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>): void => {
     e.preventDefault();
-    let foralert = false;
-    for (let i in inputs) {
-      if (inputs[i] === "") {
-        foralert = true;
-      }
-    }
-    if (foralert === true) {
-      alert("please fill form first");
-    }
+    // let foralert = false;
+    // for (let i in inputs) {
+    //   if (inputs[i] === "") {
+    //     foralert = true;
+    //   }
+    // }
+    // if (foralert === true) {
+    //   alert("please fill form first");
+    // }
     setError(FormValidate(inputs));
 
     console.log(inputs);
@@ -159,14 +158,9 @@ export default function CustomForm() {
                       aria-describedby="my-helper-text"
                     />
                     {/* {error.firstName && ( */}
-                    <span
-                      style={{
-                        display: error.firstName ? "block" : "none",
-                        color: "red",
-                      }}
-                    >
-                      {error.firstName}
-                    </span>
+                    {error.firstName && (
+                      <p style={{ color: "red" }}>{error.firstName}</p>
+                    )}
                     {/* )} */}
                   </FormControl>
                 </FormGroup>
@@ -215,6 +209,11 @@ export default function CustomForm() {
                     value={inputs.cnicDate}
                     onChange={handleInputChange}
                   />
+                  {error.cnicDate && (
+                    <span style={{ color: "red" }} id="my-cnicdate">
+                      Please insert cnic date
+                    </span>
+                  )}
                   {/* <Input
                       type="datetime-local"
                       name="cnicDate"
@@ -270,6 +269,11 @@ export default function CustomForm() {
                       src={inputs.image}
                       style={{ width: 300, height: 300 }}
                     />
+                    {error.image && (
+                      <span style={{ color: "red" }} id="my-img">
+                        Please insert image
+                      </span>
+                    )}
                   </Box>
                   {/* <input type='file' onChange={onSelectFile} />
                 {selectedFile &&  <img src={preview} /> } */}
@@ -409,6 +413,11 @@ export default function CustomForm() {
                   value={inputs.dobvalue}
                   onChange={handleInputChange}
                 />
+                {error.dobvalue && (
+                  <span style={{ color: "red" }} id="my-img">
+                    Please insert Date of birth
+                  </span>
+                )}
               </FormGroup>
             </Box>
             <FormGroup>
@@ -513,7 +522,7 @@ export default function CustomForm() {
                     </FormControl>
                   </FormGroup>
                 </Box>
-                <Box sx={{ minWidth: 550 ,margin: "5px"}}>
+                <Box sx={{ minWidth: 550, margin: "5px" }}>
                   <FormGroup>
                     <FormControl>
                       <InputLabel htmlFor="confirmPassword">
